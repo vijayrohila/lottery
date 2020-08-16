@@ -17,7 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/online-ads', function () {
+    return view('onlineads');
+});
+Route::get('/online-ads-update', function () {
+    return view('onlineads_update');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/program', 'ProgramController@program')->name('home');
+
+
