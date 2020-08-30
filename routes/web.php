@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/program', 'ProgramController@program')->name('home');
+Route::get('/district-list/{id}', 'HomeController@districtList');

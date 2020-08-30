@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\State;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,12 +51,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:50'],
+            'first_name' => ['required', 'string', 'max:50'],
+            'last_name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'image' => ['required','image','mimes:jpeg,jpg,png,gif'],
-            'address' => ['required', 'string', 'max:150'],
-            'appointment' => ['required','array'],
+            'address' => ['required', 'string', 'max:150'],            
+            'country' => ['required'],            
+            'state' => ['required'],            
+            'district' => ['required'],            
+            'pincode' => ['required','numeric'],            
+            'phone' => ['required','numeric'],            
         ]);
     }
 
@@ -67,24 +72,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-        
-        //$image = $data['image']->file('image');
-        $name = $data['image']->getClientOriginalName();
-        $destinationPath = public_path('/image');
-        $data['image']->move($destinationPath, $name);            
-        
-
-        $user =  User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'address' => $data['email'],
-            'image' => $name,
-            'password' => Hash::make($data['password']),
-        ]);
-
-        $user->appointment()->createMany($data['appointment']);
-
+        $data['email'] = Hash::make($data['password']);
+        $data['user_id'] = 'LHUI'.strtoupper(uniqid());
+        $user =  User::create($data);
         return $user;
+    }
+
+    public function showRegistrationForm()
+    {
+        $state = State::orderBy("state_name","ASC")->get()->unique('state_code');
+        return view('auth.register',compact('state'));
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        //$this->guard()->login($user);
+
+        //return $this->registered($request, $user)?: redirect($this->redirectPath());
+
+        //Mail::to($user->email)->send(new ConfirmationEmail($user));
+
+       // $user->sendEmailVerificationNotification();
+
+        return redirect()->back()->with(['status' => 'success', 'message' => "Check your inbox to verify your account!"]);
     }
 }

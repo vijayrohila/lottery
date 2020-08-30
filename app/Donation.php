@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Appointment extends Model
+class Donation extends Model
 {
     protected $fillable = [
-        'user_id', 'type', 'duration','cost'
+        'date',  'trust_name', 'state', 'country','amount','image'
     ];
 }

@@ -1,61 +1,87 @@
 $(function(){
-    if($("#login").length > 0){
-        $("#login").validate(); 
+    if($("#pop-login-form").length > 0){
+        $("#pop-login-form").validate({
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+              error.addClass('invalid-feedback');
+              element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+              $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+              $(element).removeClass('is-invalid');
+            }
+        }); 
     }
 
     if($("#register").length > 0){
         $("#register").validate({
             rules: {
-            'type[]': {
-                required: true
-            },
-            "name":{
-                maxlength:50
-            },
-            "email":{
-                maxlength:50
-            },
-            "password":{
-                maxlength:20
-            },
-            "address":{
-                maxlength:150
-            },
-            "price[]":{
-                 required: true,
-                maxlength:10000
-            },
-            "duration[]":{
-                 required: true,
-                maxlength:60
-            }
+                first_name:{
+                    maxlength:50
+                },
+                last_name:{
+                    maxlength:50
+                },
+                email:{
+                    maxlength:100
+                },
+                password:{
+                    maxlength:20
+                },
+                password_confirmation : {
+                    maxlength : 20,
+                    equalTo : "#password"
+                },
+                address:{
+                    maxlength:150
+                },
+                pincode:{
+                    maxlength:8
+                },
+                phone:{
+                    maxlength:10,
+                    minlength:10
+                }            
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
         }
         }); 
-    }
+    } 
 
-    var len=1;
-      
-    $("body").on('click', '.add-more', function () {
-        let html;
-
-        html='<div class="form-group row">\
-                <label for="password-confirm" class="col-md-4 col-form-label text-md-right"></label>\
-                <div class="col-md-2">\
-                    <select name="appointment['+len+'][type]" class="form-control" required="">\
-                        <option value="">Select appointment type</option>\
-                        <option value="emergency">Emergency</option>\
-                        <option value="routine">Routine</option>\
-                        <option value="telephone">Telephone</option>\
-                    </select>\
-                </div>    \
-                <div class="col-md-2">\
-                    <input id="duration" type="number" class="form-control" name="appointment['+len+'][duration]" required placeholder="duration in minutes" min="1" max="60">\
-                </div><div class="col-md-2"><input id="cost" type="number" class="form-control" name="appointment['+len+'][cost]" required placeholder="cost" min="1" max="10000">\
-                </div></div>';
-
-        $(".add-colum").before(html);        
-        len++;
-    });      
+    $("body").on('change', '#state', function (event) {
+      let code = $(this).find(':selected').attr("code");
+      //alert(code);
+      if(!code) {
+          $("#district").html("<option value=''>Select District</option>");          
+          return false;
+      }
+      $.ajax({
+            url: base_url + "/district-list/" + code,
+            type: 'get',
+            //data: {id: id},
+            dataType: "json",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            },            
+            success: function (result) {
+                $("#district").html("<option value=''>Select District</option>");
+                $.each(result, function( index, value ) {
+                    $("#district").append("<option value='"+value.district_name+"'>"+value.district_name+"</option>");
+                }); 
+            }
+      });
+    });        
 });
 
 $(function () {
