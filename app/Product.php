@@ -20,5 +20,10 @@ class Product extends Model
         return $this->hasMany(Winner::class)->whereNotIn("position",["pending","lost"]);
     }
 
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     
 }

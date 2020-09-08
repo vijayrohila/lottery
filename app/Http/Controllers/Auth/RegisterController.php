@@ -9,6 +9,9 @@ use App\State;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -54,7 +57,7 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:9', 'confirmed'],
             'address' => ['required', 'string', 'max:150'],            
             'country' => ['required'],            
             'state' => ['required'],            
@@ -72,16 +75,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $data['email'] = Hash::make($data['password']);
+        $data['password'] = Hash::make($data['password']);
         $data['user_id'] = 'LHUI'.strtoupper(uniqid());
         $user =  User::create($data);
         return $user;
     }
 
-    public function showRegistrationForm()
+    public function showRegistrationForm(Request $request)
     {
+        $referal_id = $request->id;
         $state = State::orderBy("state_name","ASC")->get()->unique('state_code');
-        return view('auth.register',compact('state'));
+        return view('auth.register',compact('state','referal_id'));
     }
 
     public function register(Request $request)
@@ -98,6 +102,6 @@ class RegisterController extends Controller
 
        // $user->sendEmailVerificationNotification();
 
-        return redirect()->back()->with(['status' => 'success', 'message' => "Check your inbox to verify your account!"]);
+        return redirect()->back()->with(['status' => 'success', 'message' => "Sign Up successfully!!"]);
     }
 }

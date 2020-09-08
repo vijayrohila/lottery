@@ -1,5 +1,38 @@
 @extends('layouts.app')
 @section('content')
+<style type="text/css">
+    .navbar-light .navbar-brand{
+        color: #872166;
+        font-weight: 800;
+        font-size: 30px;
+        padding: 0;
+    }
+    div#collapsibleNavbar{
+        margin-top: 0;
+    }
+    header .header-wrapper{
+        box-shadow: 0 5px 10px 0 rgba(79,36,85,.15)
+    }
+    .navbar-light .navbar-nav .nav-link{
+        color: #872166;
+        font-weight: 600;
+    }
+.form-group{
+      position: relative;
+    }
+    .form-group ion-icon{
+      position: absolute;
+      bottom: 0;
+      padding: 8px;
+      right: 0;
+      cursor: pointer;
+    }
+</style>
+<style type="text/css">
+  .owl-theme .owl-nav{
+    display: none;
+  }
+</style>
 <section>
 <div class="container">
     <div class="row">
@@ -55,6 +88,8 @@
                   <div class="form-group">
                     <label for="password" class="control-label">Password</label>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required="">
+                        <ion-icon name="eye-off" class="show-password"></ion-icon>
+
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -67,6 +102,8 @@
                   <div class="form-group">
                     <label for="password_confirmation" class="control-label">Repeat Password</label>
                     <input id="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required="">
+                        <ion-icon name="eye-off" class="show-password"></ion-icon>
+                    
                     @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -164,6 +201,7 @@
                   </div>
                 </div>
               </div>
+              <input type="hidden" name="referal_code" value="{{$referal_id}}">
               <div class="checkbox loginstyle">
                 <div class="form-group">
                   <div class="checkbox">

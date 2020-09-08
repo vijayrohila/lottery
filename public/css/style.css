@@ -267,14 +267,7 @@ nav.navbar.navbar-expand-md a.navbar-brand img {
     top: 40%;
     transform: translateY(-50%);
 }
-.our-story:before {
-    content: "";
-    position: absolute;
-    height: 100px;
-    width: 1px;
-    border-right: 1px dashed #cccccc;
-    top: -100px;
-}
+
 .practice_wrap .col-md-4 .practice-inner:after {
     position: absolute;
     font-size: 100px;
@@ -398,10 +391,15 @@ h3{
     padding-top: 100px !important;
 }
 .copyright {
-    background: #f4f4f4;
+    background: #872266;
+    color: white;
+}
+.copyright a{
+    color: white !important;
 }
 footer {
     padding: 90px 0;
+    background-color: #f4f4f4;
 }
 footer a, footer p{
     color: #872266;
@@ -421,7 +419,9 @@ footer a, footer p{
     color: black
 }
 /*testimonial*/
-
+.header_inner ion-icon{
+    color: #872266;
+}
 /*Blog*/
 .banner_wrap.blog input {
     width: 60%;
@@ -793,18 +793,50 @@ a.navbar-brand {
 }
 @media only screen and (max-width: 480px) {
 a.navbar-brand {
-    max-width: 110px;
+    /*max-width: 110px;*/
 }
 .button_wrap .left button, .button_wrap .right button {
     padding: 5px 6px;
     font-size: 10px;
 }
+
+}
+
+.about-us-section{
+    padding-top: 100px;
 }
 @media (max-width: 767.98px){
     .navbar-expand-md>.container, .navbar-expand-md>.container-fluid{
         padding-right: 15px;
         padding-left: 15px;
     }
+    .contact-us-wrap > div:first-child{
+        margin-bottom: 40px;
+    }
+    .about-us-section{
+        padding-top: 30px;    
+    }
 }
-
+.navbar-light .navbar-brand{
+color: #872166;
+font-weight: 800;
+font-size: 30px;
+padding: 0;
+}
+div#collapsibleNavbar{
+margin-top: 0;
+}
+header .header-wrapper{
+box-shadow: 0 5px 10px 0 rgba(79,36,85,.15)
+}
+.navbar-light .navbar-nav .nav-link{
+color: #872166;
+font-weight: 600;
+}
+div.dataTables_wrapper div.dataTables_filter label{
+          width: 100% !important;
+   }
+   div.dataTables_wrapper div.dataTables_filter input{
+      width: 70% !important
+   }
 /*responsive*/

@@ -1,0 +1,170 @@
+
+/*Added 13-May-2020*/
+
+footer.main-footer {
+    text-align: center;
+}
+.fa-user-circle:before, .fa-copy:before, 
+.fa-briefcase:before, .fa-clipboard:before,
+.fa-user:before  {
+    margin: 0 5px 0 3px;
+    font-size: 20px;
+}
+.fa-users:before {
+    margin: 0px 1px 0 3px;
+    font-size: 18px;
+}
+#actions63 ul {
+    list-style: none;
+    background-color: #ffffff;
+    padding: 6px 12px;
+}
+#actions63 ul li button, #actions63 ul li a {
+    background-color: transparent;
+    border: none;
+    color: #000000;
+}
+#actions63 ul li:hover {
+    background-color: #343a40;
+    color: #ffffff;
+}
+#actions63 ul li button:hover, #actions63 ul li a:hover {
+    color: #ffffff;
+}
+#actions63 ul li {
+    text-align: center;
+}
+.input-group-append {
+    margin-left: 0px;
+    position: absolute;
+    right: 0;
+    background-color: #ffffff;
+    height: 38px;
+    z-index: 9999;
+}
+.error {
+    color: #dc3545;
+    font-size: 14px;
+}
+.form-group .btn.btn-primary.close{
+    background-color: #007bff;
+    opacity: inherit;
+    color: #ffffff;
+    text-shadow: none;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 14px;
+}
+.content-wrapper .card-body .form-group button:hover {
+    background-color: #343a40;
+    opacity: inherit;
+    color: #ffffff;
+    text-shadow: none;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 14px;
+}
+ul.nav.nav-treeview li.nav-item a.nav-link:active {
+    background-color: #ffffff;
+    color: #343a40;
+}
+
+/*Added 18-May-2020*/
+
+.card-body ul {
+    padding: 0;
+}
+.card-body ul li {
+    list-style: none;
+}
+.card-body ul li button {
+    margin: 0 0 5px 0;
+}
+.card-body ul li a {
+    width: 55px;
+}
+
+/*Added 28-May-2020*/
+
+.collapse-show {
+    background-color: #d6d8d9;
+    padding: 0 10px;
+}
+.collapse-show ul li button {
+    margin: 10px 0;
+}
+.collapse-show button {
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 0;
+    color: #000000;
+    margin: 10px 0;
+    width: 56px;
+    font-size: 12px;
+}
+.collapse-show button:hover {
+    background-color: #bd2130;
+    border: none;
+    color: #ffffff
+}
+.collapse-show li a {
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 0;
+    color: #000000;
+    width: 56px;
+    font-size: 12px;
+}
+.collapse-show li a:hover {
+    background-color: #17a2b8;
+    border: none;
+    color: #ffffff
+}
+.collapse-show .reject-user:hover {
+    background-color: #ffc107;
+    border: none;
+    color: #ffffff;
+}
+.dataTables_paginate ul li a {
+    width: auto;
+}
+#offer-list_wrapper .collapse-show {
+    background-color: #d6d8d9;
+    padding: 5px 10px 1px 10px;
+    width: 76px;
+}
+.breadcrumb-item.active {
+    color: #6c757d;
+    cursor: pointer;
+}
+#loading {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: block;
+  opacity: 0.7;
+  background-color: #fff;
+  z-index: 9999;
+  text-align: center;
+}
+
+#loading-image {
+  position: absolute;
+  top: 100px;
+  left: 240px;
+  z-index: 100;
+}
+#search-calucation h3 {
+    margin-left: 12px;
+}
+#search-calucation button {
+    margin-top: 28px;
+}
+.btn-group-sm>.btn, .btn-sm {    
+    margin: 0px 6px;
+}
+.select2-selection {
+    height: 38px!important;
+}
