@@ -28,6 +28,9 @@
     var base_url = "{{ url('/')}}";
 </script>
 <header>
+    <div id="loading" style="display: none;">
+      <img id="loading-image" src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." />
+    </div>
     <nav class="navbar navbar-expand-md navbar-light p-0">
         <div class="container-fluid header_inner py-2 header-wrapper">
             <!-- Brand -->
@@ -45,77 +48,19 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('lottery.index')}}">Live Lottery</a>
+                        <a class="nav-link" href="{{url('stats')}}">Stats</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('winner.index')}}">Winners Club</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('donate.index')}}">Donations</a>
-                    </li>
-
-                    @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('cart')}}">Cart({{ \Cart::getContent()->count()}})</a>
-                    </li>
-                    <li class="nav-item d-block d-sm-none d-none d-sm-block d-md-none">
-                        <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
-                    </li>
-                    <li class="nav-item d-block d-sm-none d-none d-sm-block d-md-none">
-                        <a class="nav-link" href="{{route('login')}}">Sign In</a>
-                    </li>  
-
-                    @else
-                      <li class="nav-item">
-                        <a class="nav-link" href="{{url('profile')}}">My Profile</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{{url('change-password')}}">Change Password</a>
-                      </li>  
-                      <li class="nav-item">
-                        <a class="nav-link" href="{{url('cart')}}">Cart({{ \Cart::getContent()->count()}})</a>
-                      </li>                    
-                      <li class="nav-item d-block d-sm-none d-none d-sm-block d-md-none">
-                        <a class="nav-link" onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">Sign Out</a>
-                    </li>                                  
-                    @endguest
+                        <a class="nav-link" href="{{url('upload')}}">Upload</a>
+                    </li>                   
                     
-                </ul>
-                @guest
-                <div class="button_wrap ">
-                    @if (Route::has('register'))
-                    <div class="left ">
-                        <button class="d-none d-sm-block d-sm-none d-md-block">
-                        <a href="{{ route('register') }}" class="">Sign Up</a>
-                        </button>
-                    </div>
-                    @endif
-                    <div class="right">
-                        <button onclick="location.href = 'login.php';" style="cursor: pointer;" class="d-none d-sm-block d-sm-none d-md-block">
-                        <a href="{{ route('login') }}">Sign In</a>
-                        </button>
-                    </div>
-                </div>
-                @else
-                <div class="button_wrap">
-                    <div class="left">
-                        <button class="d-none d-sm-block d-sm-none d-md-block">
-                        <a href="{{ route('register') }}" onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">Sign Out</a>
-                        </button>
-                    </div>                    
-                </div>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-                @endguest
+                </ul>                
             </div>
         </div>
     </nav>
 </header>  
     @yield('content')
-<footer>
+<!-- <footer>
     <div class="container">
         <div class="row">
             <div class="col-md-4 last-on-small-screen">
@@ -132,7 +77,7 @@
             <div class="col-md-4">
                 <div class="inner-footer">
                     <div class="title-foot mb-3">
-                        <h4>Quick Links</h4>
+                        <h4 style="font-size: 26px;font-weight: 700;">Quick Links</h4>
                     </div>
                     <div class="menu-footer">
                         <ul class="pl-0 list-unstyled">
@@ -151,7 +96,7 @@
             <div class="col-md-4">
                 <div class="inner-footer">
                     <div class="title-foot mb-3">
-                        <h4>Quick Links</h4>
+                        <h4 style="font-size: 26px;font-weight: 700;">Quick Links</h4>
                     </div>
                     <div class="menu-footer">
                         <ul class="pl-0 list-unstyled">
@@ -169,7 +114,7 @@
             </div>
         </div>
     </div>
-</footer>
+</footer> -->
 <style type="text/css">
     .primary-logo-color > a{
         color: #872266;
@@ -181,12 +126,18 @@
 <div class="copyright py-4">
     <div class="container">
         <div class="row align-items-center" style="opacity: 0.85">
-            <div class="col-sm-3 text-sm-left primary-logo-color"><a href="http://www.eraise.in" class="color-white ">
-                A Boss Product</a></div>
-            <div class="col-sm-6 mt-3 mt-sm-0">
-                <p class="color-white lh-6 mb-0 fw-600" style="text-align: center;">© 2020 Lottery Hills.</p>
+            <div class="col-sm-3 text-sm-left primary-logo-color">
+                <a href="{{url('/about-us')}}" class="color-white ">About Us</a>
             </div>
-            <div class="col text-sm-right mt-3 mt-sm-0 primary-logo-color"><a class="color-white" href="http://www.anitco.in" target="_blank"> Developed by ANITCO.</a></div>
+            <div class="col-sm-3 text-sm-left primary-logo-color">                
+                <a href="{{url('/contact-us')}}" class="color-white ">Contact Us</a>
+            </div>
+            <div class="col-sm-3 mt-3 mt-sm-0">
+                <a href="{{url('/privacy-policy')}}" class="color-white lh-6 mb-0 fw-600" style="text-align: center;">Privacy Policy</a>                
+            </div>
+            <div class="col text-sm-right mt-3 mt-sm-0 primary-logo-color">
+                <a class="color-white" href="{{url('/term-condition')}}" >Terms and Conditions</a>                
+            </div>
         </div>
     </div>
 </div>

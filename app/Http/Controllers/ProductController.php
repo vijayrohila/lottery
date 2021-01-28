@@ -3,19 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use App\Winner;
 use Illuminate\Http\Request;
-use Auth;
-use yajra\Datatables\Datatables;
 use Validator;
-use Carbon\Carbon;
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        
-    }
     /**
      * Display a listing of the resource.
      *
@@ -23,19 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with(["batting","batting.user","winner.user"])
-                            ->whereDate("start","<=",date("Y-m-d"))
-                            ->whereDate("end",">=",date("Y-m-d"))
-                            ->get()->toArray();
-
-        $winner = [];                    
-        if(Auth::check()){
-            $winner = Winner::where("user_id",Auth::user()->id)->get()->toArray();
-        }           
-
-        //print_r($winner); die();         
-                         
-        return view("lottery",compact("products","winner"));
+        //
     }
 
     /**
@@ -45,34 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $users = Product::orderBy('id',"DESC")->get();
-        return Datatables::of($users)                        
-                        ->addIndexColumn()
-                        ->editColumn('title', function($user) {
-                            return $user->name;
-                        })
-                        ->editColumn('price', function($user) {
-                            return $user->cost;
-                        })
-                        ->editColumn('product_id', function($user) {
-                            return $user->product_id;
-                        })
-                        ->editColumn('start', function($user) {
-                            return date("Y-m-d", strtotime($user->start));
-                        })
-                        ->editColumn('end', function($user) {
-                            return date("Y-m-d", strtotime($user->end));
-                        })
-                        ->editColumn('image', function($user) {
-                            return '<img src="'.url('/public/product/'.$user->image).'" width="100px">';
-                        })                                                                      
-                        ->editColumn('created_at', function($user) {
-                            return date("Y-m-d", strtotime($user->created_at));
-                        })
-                        ->editColumn('action', function($user) {
-                            $html = '<button class="btn btn-danger btn-sm delete" id="'.$user->id.'" data-table="product">Delete</button><a class="btn btn-info btn-sm" href="'.url('/product/'.$user->id.'/edit').'">Edit</button>';                           
-                            return $html;                            
-                        })->rawColumns(['action', 'image'])->make(true);
+        //
     }
 
     /**
@@ -83,37 +36,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [                    
-                        'name' => 'required|max:200',                                                        
-                        'image' => 'required|mimes:jpeg,jpg,png,gif',
-                        'cost'=> 'required',
-                        'product_id'=> 'required|unique:products',
-                        'start'=> 'required|date|date_format:Y-m-d|before:end|after:today',
-                        'end'=> 'required|date|date_format:Y-m-d|after:start',
-                    ]);
-
-        if ($validator->fails()) {
-            $errors = json_decode($validator->errors());
-            foreach ($errors as $key => $value) {
-                return redirect()->back()->with(['status' => 'error', 'error_message' => $value[0]])
-                                 ->withInput($request->all());        
-            }
-        }
-                
-        $input = $request->all();
-
-        if ($request->has('image')) {
-            $file = $request->file('image');
-            $destinationPath = 'public/product';
-            $file_name = time() . $file->getClientOriginalName();
-            $file->move($destinationPath, $file_name);
-            $input['image'] = $file_name;
-        } 
-
-        Product::create($input);
-
-        return redirect("product")
-               ->with(['status' => 'success', 'message' => "Product added successfully!"]);
+        //
     }
 
     /**
@@ -135,8 +58,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //$product = Product::findOrfail($id);   
-        return view("product.edit_product",compact('product'));
+        //
     }
 
     /**
@@ -148,44 +70,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-       $validator = Validator::make($request->all(), [                   
-                        'name' => 'required|max:200',                                                        
-                        'image' => 'nullable|mimes:jpeg,jpg,png,gif',
-                        'cost'=> 'required',
-                        'product_id'=> 'required',
-                        'start'=> 'required|date|date_format:Y-m-d|before:end|after:today',
-                        'end'=> 'required|date|date_format:Y-m-d|after:start',
-                    ]);
-        
-
-        if ($validator->fails()) {
-            $errors = json_decode($validator->errors());
-            foreach ($errors as $key => $value) {
-                return redirect()->back()->with(['status' => 'error', 'error_message' => $value[0]])
-                                 ->withInput($request->all());        
-            }
-        }
-                
-        $input = $request->all();
-
-        if ($request->has('image')) {
-            $file = $request->file('image');
-            $destinationPath = 'public/product';
-            $file_name = time() . $file->getClientOriginalName();
-            $file->move($destinationPath, $file_name);
-            $product->image = $file_name;
-        }  
-
-        $product->name = $input['name'];
-        $product->cost = $input['cost'];
-        $product->start = $input['start'];        
-        $product->end = $input['end'];   
-        //echo "<pre>"; print_r($product); die();
-
-        $product->save();
-
-        return redirect("product")
-               ->with(['status' => 'success', 'message' => "Product updated successfully!"]);
+        //
     }
 
     /**
@@ -196,14 +81,46 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
-        return response()->json(['status' => 'success', 'message' => "Product deleted successfully!"]);
+        //
     }
 
-    public function addView(Request $request)
+    public function searchPost(Request $request)
     {
-        return view("product.add_product");
+        $validator = Validator::make($request->all(), [
+                        'language' => 'required'                                     
+                ]);
+
+        if ($validator->fails()) {
+            $errors = json_decode($validator->errors());
+            foreach ($errors as $key => $value) {
+                return response()->json(['status'=>'error', 'error_message'=>$value[0]]);
+            }
+        }
+
+        $search_post = Product::where("language_id",$request->language)->get()->toArray();
+
+        $post = view("search_post",compact('search_post'))->render();
+
+        return response()->json(['status'=>'success', 'message'=>'', "result" => $post]);
     }
 
+    public function searchPostId(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+                        'search' => 'required'                                     
+                ]);
 
+        if ($validator->fails()) {
+            $errors = json_decode($validator->errors());
+            foreach ($errors as $key => $value) {
+                return response()->json(['status'=>'error', 'error_message'=>$value[0]]);
+            }
+        }
+
+        $search_post = Product::where("product_id",$request->search)->get()->toArray();
+
+        $post = view("search_post",compact('search_post'))->render();
+
+        return response()->json(['status'=>'success', 'message'=>'', "result" => $post]);
+    }
 }

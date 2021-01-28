@@ -212,8 +212,8 @@
                     </label>
                     <p>
                       By clicking I accept the
-                      <a href="#">Terms of Service.</a>
-                      Your <a href="#">Privacy</a> is protected.
+                      <a href="{{url('term-condition')}}">Terms of Service.</a>
+                      Your <a href="{{url('privacy-policy')}}">Privacy</a> is protected.
                     </p>
                   </div>
                 </div>

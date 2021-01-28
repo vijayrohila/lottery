@@ -52,6 +52,19 @@
    top: 24px;
    font-size: 30px;
    }
+   .product-wrapper > .product-image-wrapper{
+      min-height: 148px;
+      max-height: 148px;
+      overflow: hidden;
+   }
+
+   @media only screen and (max-width: 410px) {
+      .product-wrapper .product-actions ion-icon{
+         position: unset;
+         display: block;
+         margin: 10px auto 0;
+      }
+}
 </style>
 
 <section>

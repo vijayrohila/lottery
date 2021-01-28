@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Razorpay\Api\Api;
-use App\Winner;
 use Auth;
 
 class TransactionController extends Controller

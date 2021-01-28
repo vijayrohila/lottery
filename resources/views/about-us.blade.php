@@ -2,7 +2,7 @@
 @section('content')
 <style type="text/css">
    .navbar-light .navbar-brand{
-   color: #872166;
+   color: #009688 ;
    font-weight: 800;
    font-size: 30px;
    padding: 0;
@@ -14,44 +14,50 @@
    box-shadow: 0 5px 10px 0 rgba(79,36,85,.15)
    }
    .navbar-light .navbar-nav .nav-link{
-   color: #872166;
+   color: #009688 ;
    font-weight: 600;
    }
 </style>
 <style type="text/css">
    body{
-   color: #872166;
+   color: #009688 ;
    }
    .custom-heading{
    padding-top: 50px;
    font-size: 26px;
-   color: #872166;
+   color: #009688 ;
    position: relative;
    }
    .custom-heading:after{
    content: '';
    position: absolute;
-   border: 1px solid #872166;
-   width: 100px;
+   border: 1px solid #009688 ;
+   width: 80px;
    bottom: 15px;
    margin-left: 20px;
    }
    .custom-heading:before{
    content: '';
    position: absolute;
-   border: 1px solid #872166;
-   width: 100px;
+   border: 1px solid #009688 ;
+   width: 80px;
    bottom: 15px;
-   margin-left: -120px;
+   margin-left: -100px;
    }
    .about-us-section1 p{
    padding: 50px 100px;
    text-align: center;
-   color: #872166;
+   color: #009688 ;
    line-height:1.8;
    }
    .overview-wrapper > div{
    padding: 30px;
+   }
+
+   @media only screen and (max-width: 540px){
+    .about-us-section1 p{
+      padding: 10px;
+    }
    }
 </style>
 <style type="text/css">
@@ -79,16 +85,12 @@ ol ol li::before {
   background: darkorchid;
 }
 </style>
-<section class="about-us-section1">
+<section class="about-us-section1 m-0">
    <h3 class="custom-heading">About Us</h3>
-   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-      <br>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-      <br><br>
-      <strong>That's when OneRupee was created</strong>
+   <p>{!!$about->value!!}
    </p>
 </section>
-<section class="about-us-section2" style="padding: 0 40px;background-color: #f5f5f5">
+<!-- <section class="about-us-section2 m-0" style="padding: 0 40px;background-color: #f5f5f5">
    <h3 class="custom-heading" style="margin-bottom: 10px;">Overview</h3>
    <div class="row overview-wrapper">
       <div class="col-md-6 col-sm-12">
@@ -108,7 +110,7 @@ ol ol li::before {
    </div>
 </section>
 
-<section class="about-us-section2" style="padding: 0 40px;">
+<section class="about-us-section2 m-0" style="padding: 0 40px;">
    <h3 class="custom-heading" style="margin-bottom: 10px;">Lorem Ipsum</h3>
    
    <ol>
@@ -116,5 +118,5 @@ ol ol li::before {
       <li>In hac habitasse platea dictumst.</li>
       <li>Aenean et leo imperdiet, Nunc lobortis porttitor iaculis.</li>
    </ol>
-</section>
+</section> -->
 @endsection

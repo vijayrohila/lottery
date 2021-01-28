@@ -13,11 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@home');
 
-Auth::routes();
+Auth::routes(['register' => false,"login"=>false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -26,18 +24,20 @@ Route::get('/term-condition', 'HomeController@termCondition')->name('home');
 Route::get('/contact-us', 'HomeController@contactUs')->name('home');
 Route::get('/about-us', 'HomeController@aboutUs')->name('home');
 
-Route::get('/district-list/{id}', 'HomeController@districtList');
-Route::get('/profile', 'HomeController@profile');
-Route::post('/profile', 'HomeController@updateProfile');
+Route::get('/stats', 'HomeController@Stats')->name('stats');
+Route::get('/upload', 'HomeController@upload')->name('upload');
 
-Route::resource('lottery', 'ProductController');
-Route::resource('winner', 'WinnerController');
-Route::resource('donate', 'DonationController');
+Route::resource('/traffic', 'TrafficController');
 
 // Post Route For Makw Payment Request
 Route::post('payment', 'TransactionController@payment')->name('payment');
 
-Route::get('/change-password', 'HomeController@changePassword');
+Route::post('search-post', 'ProductController@searchPost');
+Route::post('search-post-id', 'ProductController@searchPostId');
+
+
+
+/*Route::get('/change-password', 'HomeController@changePassword');
 Route::post('/change-password', 'HomeController@updatePassword');
 
 Route::get('/user-bat/create', 'HomeController@userBat');
@@ -48,6 +48,5 @@ Route::post('/add', 'CartController@add')->name('cart.store');
 Route::post('/update', 'CartController@update')->name('cart.update');
 Route::post('/remove', 'CartController@remove')->name('cart.remove');
 Route::post('/clear', 'CartController@clear')->name('cart.clear');
-
-Route::get('/single-cart/{id}', 'CartController@addCart');
+Route::get('/single-cart/{id}', 'CartController@addCart');*/
 

@@ -15,69 +15,17 @@ $(function(){
         }); 
     }
 
-    if ($('#donate-list').length > 0) {
-        $('#donate-list').DataTable({
+    if ($('#traffic-list').length > 0) {
+        $('#traffic-list').DataTable({
             processing: true,
             serverSide: true,
-            ajax: base_url + "/donate/create",
+            ajax: base_url + "/traffic/create",
             columns: [
                 {data: 'date', name: 'date'},
-                {data: 'trust_name', name: 'trust_name'},
-                {data: 'state', name: 'state'}, 
-                {data: 'country', name: 'country'},
-                {data: 'amount', name: 'amount'},                 
-                {data: 'image', name: 'image', orderable: false, searchable: false}               
+                {data: 'visitor', name: 'trust_name'},                               
             ]
         });
     }
-
-    if ($('#winner-list').length > 0) {
-        $('#winner-list').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: base_url + "/winner/create",
-            columns: [
-                {data: 'date', name: 'date'},
-                {data: 'user_id', name: 'user_id'},
-                {data: 'product_id', name: 'product_id'},
-                {data: 'amount', name: 'amount'},
-                {data: 'position', name: 'position'},
-                {data: 'image', name: 'image', orderable: false, searchable: false}  
-            ]
-        });
-    } 
-
-    if ($('#user-winner-list').length > 0) {
-        $('#user-winner-list').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: base_url + "/user-winner/create",
-            columns: [
-                {data: 'date', name: 'date'},
-                //{data: 'user_id', name: 'user_id'},
-                {data: 'product_id', name: 'product_id'},
-                {data: 'amount', name: 'amount'},
-                {data: 'position', name: 'position'},
-                {data: 'image', name: 'image', orderable: false, searchable: false}  
-            ]
-        });
-    } 
-
-    if ($('#user-bat-list').length > 0) {
-        $('#user-bat-list').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: base_url + "/user-bat/create",
-            columns: [
-                {data: 'date', name: 'date'},
-                //{data: 'user_id', name: 'user_id'},
-                {data: 'product_id', name: 'product_id'},
-                {data: 'amount', name: 'amount'},
-                {data: 'position', name: 'position'},
-                {data: 'image', name: 'image', orderable: false, searchable: false}  
-            ]
-        });
-    } 
 
     if($("#register").length > 0){
         $("#register").validate({
@@ -124,101 +72,90 @@ $(function(){
         }); 
     } 
 
-    if($("#change-password").length > 0){
-        $("#change-password").validate({
-            rules: {
-                old_password:{
-                    maxlength:20
-                    //minlength:8
-                }, 
-                password:{
-                    maxlength:20,
-                    minlength:8
-                },
-                password_confirmation : {
-                    maxlength : 20,
-                    equalTo : "#password"
-                }           
-        },
-        errorElement: 'span',
-        errorPlacement: function (error, element) {
-          error.addClass('invalid-feedback');
-          element.closest('.form-group').append(error);
-        },
-        highlight: function (element, errorClass, validClass) {
-          $(element).addClass('is-invalid');
-        },
-        unhighlight: function (element, errorClass, validClass) {
-          $(element).removeClass('is-invalid');
-        }
-        }); 
-    } 
-
-    $("body").on('change', '#state', function (event) {
-      let code = $(this).find(':selected').attr("code");
+    /*$("body").on('change', '#language', function (event) {
+      let code = $(this).find(':selected').val();
       //alert(code);
-      if(!code) {
-          $("#district").html("<option value=''>Select District</option>");          
+      if(!code) {                    
           return false;
       }
       $.ajax({
-            url: base_url + "/district-list/" + code,
+            url: base_url + "/language-post/" + code,
             type: 'get',
-            //data: {id: id},
+            data: {id: id},
             dataType: "json",
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
             },            
             success: function (result) {
-                $("#district").html("<option value=''>Select District</option>");
+                $("#district").html("<option value=''>Select Language</option>");
                 $.each(result, function( index, value ) {
                     $("#district").append("<option value='"+value.district_name+"'>"+value.district_name+"</option>");
                 }); 
             }
       });
-    });
+    });*/  
 
-    $("body").on('click', '.copyToClip', function (event) {
-          /* Get the text field */
-          var copyText = document.getElementById("copy");
-          /* Select the text field */
-          copyText.select();
-          copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-          /* Copy the text inside the text field */
-          document.execCommand("copy");
-          /* Alert the copied text */
-          //alert("Copied the text: " + copyText.value);
-          toastr.success("Copied the text", 'success');
-    });
-
-
-
-    $("body").on('click', '.add-cart', function (event) {
-          let id = $(this).attr("id");
-
+    $("#search-post").validate({
+        submitHandler: function (form) {              
             $.ajax({
-                url: base_url + "/add",
-                type: 'post',
-                data: {id: id},
-                dataType: "json",
+                url: base_url+"/search-post",
+                type: 'POST',
+                data: $("#search-post").serialize(),        
+                dataType: 'json',
                 headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                },            
-                success: function (result) {
-                    if(result.status = "success"){
-                        toastr.success(result.message, 'success');
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')             
+                },
+                beforeSend: function () {
+                    $("#loading").show();
+                },
+                complete: function () {
+                    $("#loading").hide();
+                },
+                success: function (response) {
+                    if (response.status == "success") {
+                        $("#search-add-post").html(response.result);
                     } else {
-                        toastr.error(result.error_message, 'Error');
+                        toastr.error(response.message, 'Error');
                     }
+                },
+                error: function(xhr) {            
+                    toastr.error("Something went wrong", 'Error');
                 }
             });
-    });
+        }
+    }); 
+
+    $("#search-post-id").validate({
+        submitHandler: function (form) {              
+            $.ajax({
+                url: base_url+"/search-post-id",
+                type: 'POST',
+                data: $("#search-post-id").serialize(),        
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')             
+                },
+                beforeSend: function () {
+                    $("#loading").show();
+                },
+                complete: function () {
+                    $("#loading").hide();
+                },
+                success: function (response) {
+                    if (response.status == "success") {
+                        $("#search-add-post").html(response.result);
+                    } else {
+                        toastr.error(response.message, 'Error');
+                    }
+                },
+                error: function(xhr) {            
+                    toastr.error("Something went wrong", 'Error');
+                }
+            });
+        }
+    }); 
           
 });
-
-function redirectLogin(){
-    window.location.href = base_url + "/login";
-}
 
 $(function () {
     $("body").on('keypress', 'input[type=number]', function (e) {

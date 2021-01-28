@@ -1,70 +1,51 @@
 @extends('layouts.app')
 @section('content')
- <style type="text/css">
-            
-
-        </style>
-        <style type="text/css">
-            .owl-theme .owl-nav{
-            display: none;
-          }
-            @media screen and (min-width: 780px){
-          
-            .my-custom-slider .owl-dots{
-                box-shadow: 0 5px 10px 0 rgba(79,36,85,.15);
-                transform: skew(-20deg,0deg);
-                color: #c7b9c9;
-                font-size: 20px;
-                font-weight: 600;
-                min-width: 680px;
-                bottom: -40px;
-                background: white;
-                position: absolute;
-                left: calc( 50% - 340px );
-          }
-          .my-custom-slider .owl-dots > .owl-dot{
-            position: relative;
-            width: 25%;
-                text-align: center;
-                    margin-bottom: -8px;
-          }
-          .my-custom-slider .owl-dots > .owl-dot:after{
-            content:'Add 1';
-            display: inline-block;
-            transform: skew(20deg,0deg);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            line-height: 80px;
-          }
-          .my-custom-slider .owl-dots > .owl-dot:nth-child(2):after{
-            content:'Add 2';
-          }
-          .my-custom-slider .owl-dots > .owl-dot:nth-child(3):after{
-            content:'Add 3';
-          }
-          .my-custom-slider .owl-dots > .owl-dot:nth-child(4):after{
-            content:'Add 4';
-          }
-          .my-custom-slider .owl-dots > .owl-dot.active:after{
-            color: white;
-          }
-          .my-custom-slider .owl-dots > .owl-dot > span{
-            height: 80px;
-            width: 100%;
-            border-radius: 0;
-            margin:0;
-            background-color: white !important;
-            
-          }
-          .my-custom-slider .owl-dots > .owl-dot.active > span{
-            background-color: #71215f !important;
-
-          }
+<style type="text/css">      
+      .owl-theme .owl-nav [class*=owl-]{
+        display: none;
       }
-        </style>
-<div id="login-link">
+      .owl-theme .owl-dots, .owl-theme .owl-nav{
+        position: absolute;
+      bottom: 0;
+      width: 100%;
+      }
+      .product-wrapper{
+   box-shadow: 0 0 12px rgba(0,0,0,.2);
+   margin-bottom: 30px;
+   }
+   .product-wrapper .product-image-wrapper > img{
+   width: 100%;
+   }
+   .product-wrapper .product-title{
+   font-size: 26px;
+   font-weight: 600;
+   color: #333333;
+   line-height: 2.5;
+   }
+   .product-wrapper .product-price{
+   font-size: 20px;
+   margin-bottom: 10px;
+   }
+   .product-wrapper .product-actions{
+   padding: 15px;
+   position: relative;
+   }
+   .product-wrapper .product-actions > a{
+   min-width: 160px;
+   font-size: 18px;
+   font-weight: 600;
+   padding: 12px;
+   background-color: #319688;
+   border-color: #319688;                
+   }
+   .product-wrapper .product-actions ion-icon{
+   position: absolute;
+   right: 15px;
+   top: 24px;
+   font-size: 30px;
+   }
+</style>
+<!-- <div id="login-link">
    <div id="login-content" class="overlay-login-signup">
       <span class="navbar-light" style="padding: 20px 40px;display: inline-block;"><span class="navbar-brand">{{env('APP_NAME')}}</span></span>
       <a class="closebtn" id="close-login-form">×</a>
@@ -116,7 +97,7 @@
          </div>
       </div>
    </div>
-</div>
+</div> -->
 <section style="display: none;">
    <style type="text/css">
       .custom-steps{
@@ -149,6 +130,19 @@
       background:#872266;
       color: white;
       }
+      #language{
+        border: 2px solid #319688;
+        padding: 10px;
+        height: auto;
+        color: #319688;
+        font-weight: 700;
+      }
+      .custom-button{
+            line-height: 35px;
+    background: #319588;
+    color: white;
+    font-weight: 700;
+      }
    </style>
    <div class="custom-steps">
       <div class="step-item active">
@@ -170,7 +164,7 @@
    <style type="text/css">
    </style>
    <div class="owl-carousel owl-theme image-slider my-custom-slider">
-      <div>
+      <div style="background: url(https://cdn.pixabay.com/photo/2015/07/27/20/27/mockup-863469_960_720.jpg);">
          <div class="banner_wrap">
             <div class="container-fluid">
                <div class="banner_inner">
@@ -181,14 +175,12 @@
                      <a href="#">Get Started</a>
                      </button>
                   </div>
-                  <div class="right d-none d-sm-block">
-                     <img src="images/img1111.png">
-                  </div>
+                  
                </div>
             </div>
          </div>
       </div>
-      <div>
+      <div style="background: url(https://cdn.pixabay.com/photo/2015/07/27/20/27/mockup-863469_960_720.jpg);">
          <div class="banner_wrap">
             <div class="container-fluid">
                <div class="banner_inner">
@@ -199,14 +191,12 @@
                      <a href="#">Get Started</a>
                      </button>
                   </div>
-                  <div class="right d-none d-sm-block">
-                     <img src="images/img1111.png">
-                  </div>
+                  
                </div>
             </div>
          </div>
       </div>
-      <div>
+      <div style="background: url(https://cdn.pixabay.com/photo/2015/07/27/20/27/mockup-863469_960_720.jpg);">
          <div class="banner_wrap">
             <div class="container-fluid">
                <div class="banner_inner">
@@ -217,37 +207,14 @@
                      <a href="#">Get Started</a>
                      </button>
                   </div>
-                  <div class="right d-none d-sm-block">
-                     <img src="images/img1111.png">
-                  </div>
+                  
                </div>
             </div>
          </div>
-      </div>
-      <div>
-         <div class="banner_wrap">
-            <div class="container-fluid">
-               <div class="banner_inner">
-                  <div class="left">
-                     <p>Make it. Move it. Send it. Spend it.</p>
-                     <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-                     <button>
-                     <a href="#">Get Started</a>
-                     </button>
-                  </div>
-                  <div class="right d-none d-sm-block">
-                     <img src="images/img1111.png">
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+      </div>     
    </div>
-
-
-
 </section>
-<section  class="about-us-section">
+<!-- <section  class="about-us-section">
    <div class="team_wrap">
       <div class="container">
          <div class="our-story">
@@ -257,8 +224,46 @@
          </div>
       </div>
    </div>
-</section>
+</section> -->
 <section>
+   <form id="search-post" method="post">
+    <div class="row text-center p-5 m-0" style="background-color: #e8e8e8">
+      <div class="col-md-2"></div>       
+        <div class="col-md-4">
+          <select class="form-control " id="language" name="language" required="" >
+            <option value="">Select Language</option>
+            @foreach($languages as $lang)
+                <option value="{{$lang->id}}">{{$lang->name}}</option>
+            @endforeach
+          </select>
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="form-control custom-button">Submit</button>
+        </div>      
+    </div>
+   </form>
+   <div class="row text-center p-5 m-0" id="search-add-post">
+      @foreach($products as $product)
+         <div class="col-md-4">
+            <div class="product-wrapper">
+               <div class="product-image-wrapper">
+                  <img src="{{url('/admin/public/product/1598189039download.jpg')}}">
+               </div>
+               <div class="product-content-wrapper">
+                  <div class="product-title">{{$product->name}}</div>
+                  <div class="product-price">${{$product->cost}}/-</div>
+                  <div class="product-id">{{$product->product_id}}</div>
+                  <div class="product-actions">     
+                      <a href="#" class="btn btn-primary">Link</a>
+                      <ion-icon name="add"></ion-icon>
+                  </div>
+               </div>
+            </div>
+         </div>
+      @endforeach
+   </div>
+</section>
+<!-- <section>
    <div class="container">
       <div class="row">
          <div class="col-sm-12">
@@ -268,5 +273,5 @@
          </div>
       </div>
    </div>
-</section>
+</section> -->
 @endsection

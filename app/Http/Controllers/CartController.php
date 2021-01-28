@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+
 
 class CartController extends Controller
 {
@@ -33,14 +33,13 @@ class CartController extends Controller
 			            )
 	        	));
 			}
-
-	        
+				        
         return response()->json(['status'=>"success", "message"=>'Item is Added to Cart!']);
     }
 
-    public function remove(Request $request){
+    public function remove(Request $request) {
         \Cart::remove($request->id);
-        return redirect("cart")->with(['status'=>"success", "message"=>'Item is Added to Cart!']);
+        return redirect("cart")->with(['status'=>"success", "message"=>'Item is removed from Cart!']);
     }
 
     public function clear(){

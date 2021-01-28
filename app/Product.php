@@ -7,23 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'product_id',  'name', 'cost', 'image','start','end'
+        'product_id','name','email','network','country','language','promotional_link','image','cost','post_type','company_name','mobile'
     ];
-
-    public function batting()
-    {
-        return $this->hasMany(Winner::class);
-    }
-
-    public function winner()
-    {
-        return $this->hasMany(Winner::class)->whereNotIn("position",["pending","lost"]);
-    }
-
-    public function user()
-    {
-        return $this->belongsToMany(User::class);
-    }
-
-    
 }
