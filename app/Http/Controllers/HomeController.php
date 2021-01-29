@@ -43,7 +43,7 @@ class HomeController extends Controller
         //$visitor = Tracker::currentSession();
         //echo "<pre>"; print_r($visitor); die();
         $products = Product::all();
-        $languages = Language::all();
+        $languages = Language::all(); 
 
         return view('welcome',compact('products','languages'));
     }
