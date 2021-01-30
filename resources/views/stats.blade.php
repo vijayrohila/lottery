@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.front')
 @section('content')
 <style type="text/css">
    
@@ -51,11 +51,44 @@
 <style type="text/css">
    .table td, .table th{vertical-align: middle;}
 </style>
+
 <section>
    <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-8">Live Traffic : 123641</div>
     </div>
+</section>
+<section class=w3l-category-main>
+  <div class=categories-sec>
+      <div class=wrapper>
+          <h3 class=title-main>Popular Categories</h3>
+          <div class="right-models text-center">
+              <div class="d-grid grid-sec">
+                  <a href=#product>
+                      <div class=card>
+                          <div class=card-body>
+                              <span class="fa fa-bed"></span>
+                              <h5 class="card-title mt-4">Furniture </h5>
+                              <p class=para-design>6 Ads Posted</p>
+                          </div>
+                      </div>
+                  </a>
+                  <a href=#product>
+                      <div class=card>
+                          <div class=card-body>
+                              <span class="fa fa-briefcase"></span>
+                              <h5 class="card-title mt-4">Jobs</h5>
+                              <p class=para-design>5 Ads Posted</p>
+                          </div>
+                      </div>
+
+                  </a>                  
+              </div>              
+          </div>
+      </div>
+  </div>
+</section>
+<section>
    <div class="row m-0 p-4">
       <div class="col-md-12">
          <table id="traffic-list" class="display responsive nowrap table">
@@ -87,25 +120,23 @@
    </form>   
 </section>
 <section>
-   <div class="row text-center p-5 m-0" id="search-add-post">
-      
-         <div class="col-md-4">
-            <div class="product-wrapper">
-               <div class="product-image-wrapper">
-                  <img src="{{url('/admin/public/product/1598189039download.jpg')}}">
-               </div>
-               <div class="product-content-wrapper">
-                  <div class="product-title">Name</div>
-                  <div class="product-price">$122</div>
-                  <div class="product-id">1254</div>
-                  <div class="product-actions">     
-                      <a href="#" class="btn btn-primary">Link</a>
-                      <ion-icon name="add"></ion-icon>
-                  </div>
+   <div class="row text-center p-5 m-0" id="search-add-post">      
+      <div class="col-md-4">
+         <div class="product-wrapper">
+            <div class="product-image-wrapper">
+               <img src="{{url('/admin/public/product/1598189039download.jpg')}}">
+            </div>
+            <div class="product-content-wrapper">
+               <div class="product-title">Name</div>
+               <div class="product-price">$122</div>
+               <div class="product-id">1254</div>
+               <div class="product-actions">     
+                   <a href="#" class="btn btn-primary">Link</a>
+                   <ion-icon name="add"></ion-icon>
                </div>
             </div>
          </div>
-      
+      </div>      
    </div>
 </section>
 @endsection

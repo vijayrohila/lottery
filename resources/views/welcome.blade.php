@@ -1,5 +1,13 @@
 @extends('layouts.front')
 @section('content')
+<style type="text/css">
+.w3l-products-4 section.tab-content {
+    display: block;
+}
+.w3l-content-11-main .content-design-11 {    
+    background: #f8f9fa00;
+}
+</style>
     <section class=w3l-banner-3-main>
         <div class=banner-3>
             <div class=wrapper>
@@ -12,18 +20,17 @@
                 </div>
             </div>
         </div>
-    </section>
-    
+    </section>   
     
     <section class=w3l-search-form-3-main>
         <div class=search-form-3>
             <div class=wrapper>
-                <div class=section-width style="margin: 0 auto;width: 680px">
-                    <form action=# class=search-3-gd method=post>
+                <div class=section-width style="margin: 0 auto;width: 680px">                    
+                    <form id="search-post" method="post" class="search-3-gd">
                         <div class="d-flex grids-icon grids-icon-2">
                             <span class="fa fa-tags" aria-hidden=true></span>
                             <div class=input-group-btn>
-                                <select class="btn btn-default" name=ext required>
+                                <select class="btn btn-default" id="language" name="language" required="" >
                                     <option selected>Select Languages</option>
                                     @foreach($languages as $lang)
                                         <option value="{{$lang->id}}">{{$lang->name}}</option>
@@ -31,14 +38,14 @@
                                 </select>
                             </div>
                         </div>
-                        <button type=submit class="btn button-eff"><span class="fa fa-search" aria-hidden=true></span>Search</button>
+                        <button type="submit" class="btn button-eff"><span class="fa fa-search" aria-hidden="true"></span>Search</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
     
-    <form id="search-post" method="post">
+   <!--  <form id="search-post" method="post">
         <div class="row text-center p-5 m-0" style="background-color: #e8e8e8">
           <div class="col-md-2"></div>       
             <div class="col-md-4">
@@ -53,8 +60,8 @@
               <button type="submit" class="form-control custom-button">Submit</button>
             </div>      
         </div>
-       </form>
-       <div class="row text-center p-5 m-0" id="search-add-post">
+       </form> -->
+       <!-- <div class="row text-center p-5 m-0" id="search-add-post">
           @foreach($products as $product)
              <div class="col-md-4">
                 <div class="product-wrapper">
@@ -73,168 +80,40 @@
                 </div>
              </div>
           @endforeach
-       </div>
-    
-    <section class=w3l-category-main>
-        <div class=categories-sec>
-            <div class=wrapper>
-                <h3 class=title-main>Popular Categories</h3>
-                <div class="right-models text-center">
-                    <div class="d-grid grid-sec">
-                        <a href=#product>
-                            <div class=card>
-                                <div class=card-body>
-                                    <span class="fa fa-bed"></span>
-                                    <h5 class="card-title mt-4">Furniture </h5>
-                                    <p class=para-design>6 Ads Posted</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href=#product>
-                            <div class=card>
-                                <div class=card-body>
-                                    <span class="fa fa-briefcase"></span>
-                                    <h5 class="card-title mt-4">Jobs</h5>
-                                    <p class=para-design>5 Ads Posted</p>
-                                </div>
-                            </div>
-
-                        </a>
-                        <a href=#product>
-                            <div class=card>
-                                <div class=card-body>
-                                    <span class="fa fa-futbol-o"></span>
-                                    <h5 class="card-title mt-4">Sports</h5>
-                                    <p class=para-design>6 Ads Posted</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href=#product>
-                            <div class=card>
-                                <div class=card-body>
-                                    <span class="fa fa-home"></span>
-                                    <h5 class="card-title mt-4">Real Estate</h5>
-                                    <p class=para-design>6 Ads</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="d-grid grid-sec-2">
-                        <a href=#product>
-                            <div class=card>
-                                <div class=card-body>
-                                    <span class="fa fa-laptop"></span>
-                                    <h5 class="card-title mt-4">Electronics</h5>
-                                    <p class=para-design>6 Ads</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href=#product>
-                            <div class=card>
-                                <div class=card-body>
-                                    <span class="fa fa-heart"></span>
-                                    <h5 class="card-title mt-4">Health & Beauty</h5>
-                                    <p class=para-design>5 Ads Posted</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+       </div> -->
     
     <div class=w3l-products-4>
         <div id=products4-block class=text-center>
             <div class=wrapper>
-                <input id=tab1 type=radio name=tabs checked>
+                <!-- <input id=tab1 type=radio name=tabs checked>
                 <label class=tabtle for=tab1>Latest Ads</label>
 
                 <input id=tab2 type=radio name=tabs>
                 <label class=tabtle for=tab2>Featured Ads</label>
 
                 <input id=tab3 type=radio name=tabs>
-                <label class=tabtle for=tab3>Ending Soon</label>
+                <label class=tabtle for=tab3>Ending Soon</label> -->
 
                 <section id=content1 class="tab-content text-left">
                     <div class="d-grid grid-col-3">
+                        @foreach($products as $product)
                         <div class=product>
-                            <a href=#product><img src=assets/images/c1.jpg class=img-responsive alt=""></a>
+                            <a href=#product><img src="{{ env('ADMIN_URL').'/product/1598189039download.jpg'}}" class=img-responsive alt=""></a>
                             <div class=info-bg>
-                                <h5><a href=#product>Sed ut perspiciatis unde omnis iste natus</a></h5>
-                                <p>Nulla ex nunc</p>
+                                <h5><a href=#product>{{$product->name}}</a></h5>
+                                <p>{{$product->product_id}}</p>
                                 <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 1200</li>
+                                    <li><span class="fa fa-usd"></span> {{$product->cost}}</li>
                                     <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
                                     <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class=product>
-                            <a href=#product><img src=assets/images/c2.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Eaque ipsa quae ab illo inventore veritatis</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 299</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class=product>
-                            <a href=#product><img src=assets/images/c3.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Quasi architecto beatae vitae dicta sunt</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 499</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class=product>
-                            <a href=#product><img src=assets/images/pf3.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Nemo enim ipsam quia voluptas sit et</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 800</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class=product>
-                            <a href=#product><img src=assets/images/c5.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Ut enim ad minima veniam, quis nostrum</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 1300</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class=product>
-                            <a href=#product><img src=assets/images/pb1.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Sed ut perspiciatis unde omnis rerum est</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 2,500</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        </div>   
+                        @endforeach                     
                     </div>
                 </section>
 
-                <section id=content2 class="tab-content text-left">
+                <!-- <section id=content2 class="tab-content text-left">
                     <div class="d-grid grid-col-3">
                         <div class=product>
                             <a href=#product><img src=assets/images/c4.jpg class=img-responsive alt=""></a>
@@ -350,12 +229,13 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
+
             </div>
         </div>
     </div>
     
-    <section class=w3l-grids-9-main>
+    <!-- <section class=w3l-grids-9-main>
         <div class=grid-top-9>
             <div class=wrapper>
                 <h3 class=title-main>Popular Locations</h3>
@@ -395,10 +275,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     
     
-    <section class=w3l-specifications-9>
+    <!-- <section class=w3l-specifications-9>
         <div class=main-w3>
             <div class=overlay>
                 <div class=wrapper>
@@ -435,9 +315,9 @@
             </div>
         </div>
         
-    </section>
+    </section> -->
     
-    <section class=w3l-pricing-7-main id=bottom>
+    <!-- <section class=w3l-pricing-7-main id=bottom>
         <div class=pricing-7-sec>
             <div class=wrapper>
                 <h3 class=title-main>Pricing Packages</h3>
@@ -570,7 +450,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     
     
     <section class=w3l-content-11-main>
@@ -638,7 +518,7 @@
         </div>
     </section>
     
-    <div class=w3l-new-block-6>
+    <!-- <div class=w3l-new-block-6>
         
         <section id=grids5-block>
             <div class=wrapper>
@@ -695,7 +575,7 @@
                 </div>
             </div>
         </section>
-    </div>
+    </div> -->
        
 @endsection
 
@@ -944,7 +824,7 @@
       </div>
    </div>
 </section> -->
-<section>
+<!-- <section>
    <form id="search-post" method="post">
     <div class="row text-center p-5 m-0" style="background-color: #e8e8e8">
       <div class="col-md-2"></div>       
@@ -981,7 +861,7 @@
          </div>
       @endforeach
    </div>
-</section>
+</section> -->
 <!-- <section>
    <div class="container">
       <div class="row">

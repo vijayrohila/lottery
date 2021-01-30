@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.front')
 @section('content')
 <style type="text/css">
     .navbar-light .navbar-brand{
