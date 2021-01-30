@@ -25,7 +25,7 @@
     <section class=w3l-search-form-3-main>
         <div class=search-form-3>
             <div class=wrapper>
-                <div class=section-width style="margin: 0 auto;width: 680px">                    
+                <div class=section-width style="margin: 0 auto;">                    
                     <form id="search-post" method="post" class="search-3-gd">
                         <div class="d-flex grids-icon grids-icon-2">
                             <span class="fa fa-tags" aria-hidden=true></span>
@@ -39,6 +39,7 @@
                             </div>
                         </div>
                         <button type="submit" class="btn button-eff"><span class="fa fa-search" aria-hidden="true"></span>Search</button>
+
                     </form>
                 </div>
             </div>

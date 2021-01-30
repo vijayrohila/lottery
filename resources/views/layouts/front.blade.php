@@ -145,9 +145,7 @@
             }
             }
          </style>
-         <div class="pull-right toggle-right-sidebar">
-            <span class="fa title-open-right-sidebar tooltipstered fa-angle-double-right"></span>
-         </div>
+         
          <div class=w3l-headers-9>
             <header>
                <div class=wrapper>
