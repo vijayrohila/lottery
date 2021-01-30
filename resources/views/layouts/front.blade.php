@@ -16,7 +16,7 @@
       <div id="codefund"></div>
       <meta name="robots" content="noindex">
       <body>
-         <link rel="stylesheet" href="https://demo.w3layouts.com/assests/css/font-awesome.min.css">
+         {{-- <link rel="stylesheet" href="{{asset('asset/font-awesome.min.css')}}"> --}}
          <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">      
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css"> 
         <link rel="stylesheet" type="text/css" href="https://demo.w3layouts.com/assests/fonts/fontawesome-webfont.woff?v=4.7.0"> 
