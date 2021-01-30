@@ -113,6 +113,9 @@ div.dataTables_wrapper div.dataTables_length select{
     float: left;
     width: 50%;padding: 10px;
 }
+.img-responsive{
+    width: 100%;
+}
 </style>
 <style type="text/css">
    .table td, .table th{vertical-align: middle;}

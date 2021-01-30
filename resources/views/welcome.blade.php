@@ -7,6 +7,9 @@
 .w3l-content-11-main .content-design-11 {    
     background: #f8f9fa00;
 }
+.img-responsive{
+    width: 100%;
+}
 </style>
     <section class=w3l-banner-3-main>
         <div class=banner-3>
