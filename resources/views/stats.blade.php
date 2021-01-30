@@ -115,6 +115,7 @@ div.dataTables_wrapper div.dataTables_length select{
 }
 .img-responsive{
     width: 100%;
+    
 }
 </style>
 <style type="text/css">

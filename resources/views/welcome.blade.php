@@ -9,6 +9,7 @@
 }
 .img-responsive{
     width: 100%;
+    
 }
 </style>
     <section class=w3l-banner-3-main>
