@@ -21,19 +21,25 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/privacy-policy', 'HomeController@privacyPolicy')->name('home');
 Route::get('/term-condition', 'HomeController@termCondition')->name('home');
-Route::get('/contact-us', 'HomeController@contactUs')->name('home');
+Route::get('/faq', 'HomeController@contactUs')->name('home');
 Route::get('/about-us', 'HomeController@aboutUs')->name('home');
 
-Route::get('/stats', 'HomeController@Stats')->name('stats');
-Route::get('/upload', 'HomeController@upload')->name('upload');
+Route::get('/statistics', 'HomeController@Stats')->name('stats');
+Route::get('/publish', 'HomeController@upload')->name('upload');
 
 Route::resource('/traffic', 'TrafficController');
 
 // Post Route For Makw Payment Request
 Route::post('payment', 'TransactionController@payment')->name('payment');
 
+Route::resource('product', 'ProductController');
+
 Route::post('search-post', 'ProductController@searchPost');
+
 Route::post('search-post-id', 'ProductController@searchPostId');
+
+Route::post('product-id-post', 'ProductController@productIdPost');
+
 
 
 

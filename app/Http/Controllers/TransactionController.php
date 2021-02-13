@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Transaction;
+use App\Product;
 use Illuminate\Http\Request;
 use Razorpay\Api\Api;
 use Auth;
@@ -14,10 +14,10 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function payment(Request $resuest)
+    public function payment(Request $request)
     {
         //Input items of form
-        $input = $resuest->all();
+        $input = $request->all();
         //echo "<pre>"; print_r($input); die();
         //get API Configuration 
         $api = new Api(env('ROZOR_KEY'), env('ROZOR_SECRET') );
@@ -26,27 +26,24 @@ class TransactionController extends Controller
 
         if(count($input)  && !empty($input['razorpay_payment_id'])) {
             try {
-                $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount'])); 
+                $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount']));                
 
-                $cartCollection = \Cart::getContent();
+                if ($request->has('image')) {
+                    $file = $request->file('image');
+                    $destinationPath = 'public/product';
+                    $file_name = time() . $file->getClientOriginalName();
+                    $file->move($destinationPath, $file_name);
+                    $input['image'] = $file_name;
+                } 
 
-                $insert = [];
+                $input['network_id'] = $input['network'];
+                $input['country_id'] = $input['country'];
+                $input['language_id'] = $input['language'];
+                $input['currency'] = $payment['currency'];
+                $input['cost'] = $payment['amount']/100;
+                $input['payment_id'] = $input['razorpay_payment_id'];
 
-                foreach ($cartCollection as $key => $item) {
-
-                    $insert[] = array(
-                                "user_id"     => Auth::user()->id,
-                                "product_id"  => $item->id,
-                                "transaction" => $input['razorpay_payment_id'],
-                                "price"       => 1,
-                                "created_at" => date("Y-m-d h:i:s"),
-                                "updated_at" => date("Y-m-d h:i:s"),
-                            );
-                }
-
-                Winner::insert($insert);
-
-                \Cart::clear();
+                Product::create($input);                             
 
                 return redirect()->back()->with(["status"=>"success","message"=>"Payment successfully"]);
 

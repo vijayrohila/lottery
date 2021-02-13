@@ -166,7 +166,7 @@ img:hover {
   opacity: .8;
 }
 
-.button-eff {
+.button-eff,.razorpay-payment-button {
   background: #5ec64d;
   box-shadow: 0px 4px 0px 0px #44B33D;
   padding: 10px 30px;
@@ -184,17 +184,17 @@ img:hover {
   margin-right: 10px;
 }
 
-.button-eff-2 {
+.button-eff-2,.razorpay-payment-button {
   background: var(--theme-color-2);
   box-shadow: 0px 4px 0px 0px #f53047;
 }
 
-.button-eff:hover {
+.button-eff:hover,.razorpay-payment-button:hover {
   background: #44B33D;
   opacity: 1;
 }
 
-.button-eff-2:hover {
+.button-eff-2:hover,.razorpay-payment-button:hover {
   background: #f53047;
   opacity: 1;
 }
@@ -3387,7 +3387,7 @@ h3.title-main:after {
   padding-right: 0 !important;
 }
 
-.w3l-headers-9 a.btn.button-eff.button-eff-2 {
+.w3l-headers-9 a.btn.button-eff.button-eff-2,.razorpay-payment-button {
   padding: 10px 18px;
 }
 
@@ -5400,7 +5400,8 @@ h3.title-main:after {
 
 .w3l-footer-22 .sub-columns {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  /*grid-template-columns: 2fr 1fr 1fr 1.5fr;*/
+  grid-template-columns: 2fr 2fr 1fr;
   grid-gap: 50px;
   margin-top: 60px;
 }
@@ -5821,7 +5822,7 @@ h3.title-main:after {
   min-height: 11em;
 }
 
-.w3l-contact-main button.button-eff-2 {
+.w3l-contact-main button.button-eff-2,.razorpay-payment-button {
   margin-top: 1em;
   padding: 10px 40px;
 }

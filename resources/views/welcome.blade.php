@@ -17,9 +17,8 @@
             <div class=wrapper>
                 <div class=cover-top-center-9>
                     <div class=w3ls_cover_txt-9>
-                        <h3 class=title-cover-9>Buy, Sell, Rent & Exchange in one Click</h3>
-                        <p class=para-cover-9>Once aute irure dolor in reprehenderit in voluptate velit
-                            esse cillum dolore eu fugiat nulla pariatur consectetur adipiscing elit.</p>
+                        <h3 class=title-cover-9>Publish Your Content @ Lowest Price</h3>
+                        <p class=para-cover-9>Now Enjoy Current Affairs around World in One Click.</p>
                     </div>
                 </div>
             </div>
@@ -35,15 +34,17 @@
                             <span class="fa fa-tags" aria-hidden=true></span>
                             <div class=input-group-btn>
                                 <select class="btn btn-default" id="language" name="language" required="" >
-                                    <option selected>Select Languages</option>
+                                    <option value="">Select Languages</option>
                                     @foreach($languages as $lang)
                                         <option value="{{$lang->id}}">{{$lang->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn button-eff"><span class="fa fa-search" aria-hidden="true"></span>Search</button>
-
+                        <button type="button" class="btn button-eff" id="search-lang-post">
+                            <span class="fa fa-search" aria-hidden="true"></span>
+                            Search
+                        </button>
                     </form>
                 </div>
             </div>
@@ -87,9 +88,10 @@
           @endforeach
        </div> -->
     
-    <div class=w3l-products-4>
-        <div id=products4-block class=text-center>
-            <div class=wrapper>
+    <div class="w3l-products-4">
+        <div id="products4-block" class="text-center">
+            <div class="wrapper">
+                <h3 class="title-main" id="prmt">Promoted</h3>
                 <!-- <input id=tab1 type=radio name=tabs checked>
                 <label class=tabtle for=tab1>Latest Ads</label>
 
@@ -99,7 +101,7 @@
                 <input id=tab3 type=radio name=tabs>
                 <label class=tabtle for=tab3>Ending Soon</label> -->
 
-                <section id=content1 class="tab-content text-left">
+                <!-- <section id=content1 class="tab-content text-left">
                     <div class="d-grid grid-col-3">
                         @foreach($products as $product)
                         <div class=product>
@@ -115,6 +117,28 @@
                             </div>
                         </div>   
                         @endforeach                     
+                    </div>
+                </section> -->
+                <section id="content1" class="tab-content text-left">
+                    <div class="d-grid grid-col-3" id="search-add-post">
+                        <div class="product">
+                            <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                            <div class="info-bg">
+                                <h5><a href="#product">Empty Pages Private Limited</a></h5>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                            <div class="info-bg">
+                                <h5><a href="#product">Secminhr Private Limited</a></h5> 
+                            </div>
+                        </div>
+                        <div class="product">
+                            <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                            <div class="info-bg">
+                                <h5><a href="#product">AN IT Company - Software Services</a></h5> 
+                            </div>
+                        </div>
                     </div>
                 </section>
 

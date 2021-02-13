@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.front')
 @section('content')
 <style type="text/css">
    .navbar-light .navbar-brand{
@@ -14,9 +14,14 @@
    box-shadow: 0 5px 10px 0 rgba(79,36,85,.15)
    }
    .navbar-light .navbar-nav .nav-link{
-   color: #009688 ;
-   font-weight: 600;
+      color: #009688 ;
+      font-weight: 600;
    }
+  h3 {
+      font-weight: 600;
+      text-align: center;
+      padding: 120px 0 0;
+  }
 </style>
 <style type="text/css">
    body{
@@ -87,8 +92,8 @@ ol ol li::before {
 </style>
 <section class="about-us-section1 m-0">
    <h3 class="custom-heading">About Us</h3>
-   <p>{!!$about->value!!}
-   </p>
+   {!!$about->value!!}
+   
 </section>
 <!-- <section class="about-us-section2 m-0" style="padding: 0 40px;background-color: #f5f5f5">
    <h3 class="custom-heading" style="margin-bottom: 10px;">Overview</h3>

@@ -30,6 +30,10 @@ class CreateProductsTable extends Migration
             $table->foreign('language_id')->references('id')->on('languages');            
             
             $table->string("promotional_link");
+                        
+            $table->string("payment_id");
+            $table->string("currency");
+
             $table->string("image");
             $table->string("cost");
             $table->enum("post_type",["1","0"])->comment("1:18+,0:18+");

@@ -18,6 +18,7 @@
         "laravel/ui": "^2.1",
         "pragmarx/tracker": "^4.0",
         "razorpay/razorpay": "^2.5",
+        "spatie/laravel-analytics": "^3.10",
         "yajra/laravel-datatables-oracle": "^9.10"
     },
     "require-dev": {

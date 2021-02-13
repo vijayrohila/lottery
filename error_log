@@ -1,3 +1,6 @@
 [22-Jan-2021 14:31:14 UTC] PHP Fatal error:  Out of memory (allocated 799014912) (tried to allocate 20480 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/Package/Loader/ArrayLoader.php on line 241
 [22-Jan-2021 14:32:50 UTC] PHP Fatal error:  Out of memory (allocated 799014912) (tried to allocate 20480 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/Package/Loader/ArrayLoader.php on line 241
 [22-Jan-2021 15:32:20 UTC] PHP Fatal error:  Out of memory (allocated 799014912) (tried to allocate 20480 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/Package/Loader/ArrayLoader.php on line 241
+[10-Feb-2021 13:58:50 UTC] PHP Fatal error:  Out of memory (allocated 799014912) (tried to allocate 4096 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/Package/Loader/ArrayLoader.php on line 241
+[10-Feb-2021 14:53:02 UTC] PHP Fatal error:  Out of memory (allocated 799014912) (tried to allocate 20480 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/Package/Loader/ArrayLoader.php on line 241
+[10-Feb-2021 15:11:28 UTC] PHP Fatal error:  Out of memory (allocated 798191616) (tried to allocate 4096 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/Json/JsonFile.php on line 270

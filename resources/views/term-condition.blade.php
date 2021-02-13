@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.front')
 @section('content')
 <style type="text/css">
    .navbar-light .navbar-brand{
@@ -17,6 +17,11 @@
    color: #009688 ;
    font-weight: 600;
    }
+   h3 {
+      font-weight: 600;
+      text-align: center;
+      padding: 120px 0 0;
+  }
 </style>
 <style type="text/css">
    .custom-heading{
@@ -47,8 +52,8 @@
 </style>
 <section class="about-us-section1">
    <h3 class="custom-heading ">Terms and Conditions</h3>
-   <span class="p-5">
+   
       {!!$term->value!!}
-   </span>
+  
 </section>
 @endsection

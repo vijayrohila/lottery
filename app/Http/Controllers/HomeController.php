@@ -9,11 +9,14 @@ use App\Language;
 use App\Network;
 use App\Country;
 use App\Setting;
+use App\EngageProduct;
 use Auth;
+use Analytics;
 use Hash;
 use Illuminate\Support\Facades\Validator;
 use yajra\Datatables\Datatables;
-use Tracker;
+use Spatie\Analytics\Period;
+
 
 class HomeController extends Controller
 {
@@ -92,7 +95,17 @@ class HomeController extends Controller
 
     public function Stats()
     {
-        return view("stats");
+        $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(2));
+        $analyticsData = isset($analyticsData[0]['visitors'])?$analyticsData[0]['visitors']:0;
+
+        $total_product = EngageProduct::count();
+
+        $today_product = EngageProduct::whereBetween('created_at', [
+                                now()->format('Y-m-d 00:00:00'),
+                                now()->format('Y-m-d 23:59:59')
+                            ])->count();
+
+        return view("stats",compact('total_product','today_product','analyticsData'));
     }
 
     public function upload()
@@ -104,18 +117,26 @@ class HomeController extends Controller
 
         $key = array_search('post_hours', array_column($total_post, 'key'));
 
+        $key2 = array_search('company_name', array_column($total_post, 'key'));
+
         $post = 0;
 
         if($key !== false) {
             $post = $total_post[$key]['value'];
         }
 
-        $total_product = Product::whereBetween('created_at', [
+        $company_name = '';
+
+        if($key2 !== false) {
+            $company_name = $total_post[$key2]['value'];
+        }
+
+        $total_product = EngageProduct::whereBetween('created_at', [
                 now()->format('Y-m-d H:00:00'),
                 now()->addHours(1)->format('Y-m-d H:00:00')
             ])->count();
         
-        return view("upload",compact('country','network','language','total_product','post'));
+        return view("upload",compact('country','network','language','total_product','post','company_name'));
     }
     
 }

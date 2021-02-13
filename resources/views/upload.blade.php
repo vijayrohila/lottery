@@ -20,12 +20,19 @@
     #custom_box{
     background: white;
     color: black !important;
-    padding: 15px;
+    padding: 10px;
     font-size: 22px;
     font-weight: 700;
     border-radius: 5px;
-    margin-left: 30px;
+    margin: 0px 5px 10px;
    }
+
+  .error {
+    color: red;
+  }
+  .razorpay-payment-button {
+    display: none;
+  }
 
 </style>
 <style type="text/css">
@@ -48,351 +55,233 @@
     display: inline-block !important;
     vertical-align: middle;
   }
+  ul.breadcrumbs-custom-path.generate-id {
+    text-align: center;
+}
+.w3l-contact-main .content-grids-cont.tt {
+    grid-template-columns: 1fr 1fr 1fr;    
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 </style>
 <section class="w3l-inner-banner-main">
   <div class="about-inner inner2">
     <div class="wrapper seen-w3">
-      <div class="custom-line">@php echo ($total_product < $post)?$post-$total_product:"0"; @endphp post is avaialables out of {{$post}} post in this Hour</div>
+      <div class="custom-line">
+        <span id="custom_box" class="avail-post">
+          @php 
+            echo ($total_product < $post)?$post-$total_product:"0";
+          @endphp 
+        </span>/<span id="custom_box">{{$post}}</span> 
+        <p style="margin-top: 25px; color: white">Posts Available in this Hour</p> 
+      </div>      
+      
       <ul class="breadcrumbs-custom-path">
-        <li><a style="font-size: 20px;">Automatic generated ID</a></li>
-        <li></li>
-        <li class="active custom-box" id="custom_box">PID601543887922015</li>
+        <li id="custom_box" style="margin-top: 13px; cursor: pointer;" class="pick-one">Pick</li>
       </ul>
+
+      <ul class="breadcrumbs-custom-path">
+        <!-- <li id="custom_box" style="margin-top: 13px; cursor: pointer;" class="pick-one">Pick</li> -->
+        <li id="demo"></li>
+      </ul>     
     </div>
   </div>
 </section>
 
-<div class="w3l-contact-main">
+<div class="w3l-contact-main" style="display: none" id="form-div">
     <div class="contact sec-padding">
         <div class="wrapper">
+           <ul class="breadcrumbs-custom-path generate-id" style="display: none">
+            <ul class="active custom-box product-id" id="custom_box">Post ID: </ul>        
+          </ul>
             <div class="contact-form mx-auto pt-sm-4">
-                <form method="post" action="https://sendmail.w3layouts.com/submitForm">
+                <form method="post" action="{!!route('payment')!!}" id="register"  enctype="multipart/form-data">
+                  @csrf
+                  <input type="hidden" name="product_id" value="" id="product_id">
                     <div class="d-grid content-grids-cont">
                         <div class="form-group">
                             <label for="w3lName">Name</label>
-                            <input type="text" class="form-control" name="w3lName" id="w3lName" placeholder="" required="">
+                            <input id="name" type="text" class="form-control" name="name" required=""  placeholder="Name">
                         </div>
                         <div class="form-group">
-                            <label for="w3lSender">Email</label>
-                            <input type="email" class="form-control" name="w3lSender" id="w3lSender" placeholder="" required="">
+                            <label for="w3lSender">Email ID</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="">
                         </div>
+                                                
                     </div>
+
+                    <div class="form-group">
+                        <label for="w3lSender">Mobile Number</label>
+                        <input type="number" class="form-control" name="mobile" id="mobile" placeholder="eg :  +1 2345 6789" required="">
+                      </div>
+                    
                     <div class="form-group">
                         <label for="w3lSubject">Networks / Website</label>
-                        <select class="form-control">
-                          @foreach($network as $net)
-                          <option value="">Select Network</option>
-                            <option value="{{$net->id}}">{{$net->name}}</option>
-                          @endforeach  
-                        </select>
-                        
+                        <select class="form-control" id="network" name="network" required="">
+                            <option value="">Your Promotional Link Belongs to</option>
+                            @foreach($network as $net)
+                                <option value="{{$net->id}}">{{$net->name}}</option>
+                            @endforeach
+                        </select>                        
                     </div>
                     <div class="form-group">
                         <div class="form-group">
                           <label for="last_name" class="control-label">Country</label>
-                          <select class="form-control @error('country') is-invalid @enderror" id="country" name="country" required="">
+                          <select class="form-control" id="country" name="country" required="">
                             <option value="">Select Country</option>
                             @foreach($country as $cntry)
-                                <option value="{{$cntry->id}}">{{$cntry->name}}</option>
+                                <option value="{{$cntry->id}}" data-tax="{{$cntry->tax}}" data-fee="{{$cntry->fee}}" data-currency="{{$cntry->currency}}">{{$cntry->name}}</option>
                             @endforeach
-                          </select>
-                          @error('country')
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
+                          </select>                          
                           <p class="help-block"></p>
                         </div>
                     </div>
-
                   <div class="form-group">
                     <label for="language" class="control-label">Language</label>
-                    <select class="form-control @error('language') is-invalid @enderror" id="language" name="language" required="">
+                    <select class="form-control" id="language" name="language" required="">
                       <option value="">Select Language</option>
                       @foreach($language as $lang)
                           <option value="{{$lang->id}}">{{$lang->name}}</option>
                       @endforeach
                     </select>
-                    @error('language')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $language }}</strong>
-                        </span>
-                    @enderror
+                    
                     <p class="help-block"></p>
                   </div>
                   <div class="form-group">
                     <label for="promotional_link" class="control-label">Promotional Link</label>
-                    <input id="promotional_link" type="text" class="form-control @error('promotional_link') is-invalid @enderror" name="promotional_link" required="" value="" placeholder="Promotional Link">
-                    @error('promotional_link')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <input id="promotional_link" type="text" class="form-control" name="promotional_link" required="" value="" placeholder="Promotional Link">
                     <p class="help-block"></p>
                   </div>
                   <div class="form-group">
                     <label for="image" class="control-label">Upload Image</label>
-                    <input type="file"  class="form-control @error('image') is-invalid @enderror" id="image" required="" name="image">   
-                                        
-                    @error('image')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <input type="file"  class="form-control" id="image" required="" name="image">  
                     <p class="help-block"></p>
                   </div>
 
-                  <div class="form-group">
-                    <label for="state" class="control-label">Paid Amount</label>
-                    <input id="cost" type="text" class="form-control @error('cost') is-invalid @enderror" name="cost" required="" value="" placeholder="Paid Amount">
-                    @error('state')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                  <div class="d-grid content-grids-cont tt">
+                    <div class="form-group">
+                      <label for="state" class="control-label">Fee</label>
+                      <input id="fee" type="text" class="form-control" name="fee"  value="" placeholder="Fee" readonly="">
+                    </div>
+                    <div class="form-group">
+                      <label for="state" class="control-label">Tax</label>
+                      <input id="tax" type="text" class="form-control" name="tax"  value="" placeholder="Tax" readonly="">
+                    </div>
+                    <div class="form-group">
+                      <label for="state" class="control-label">Total</label>
+                      <input id="total" type="text" class="form-control" name="total"  value="" placeholder="Total" readonly="">
                     <p class="help-block"></p>
+                    </div>
                   </div>
+
                   <div class="form-group">
-                    <label for="pop_signup_password" class="control-label">Post/Content Display</label>
+                    <label for="pop_signup_password" class="control-label">Post/Content Display to</label>
                     <div class="form-group-radio">
-                      <input type="radio" id="0" name="post_type" value="0" class="form-control">
+                      <input type="radio" id="0" name="post_type" value="0" class="form-control" required="">
                       <label for="0">All</label>
                     </div>
                     <div class="form-group-radio">
-                      <input type="radio" id="1" name="post_type" value="1" class="">
+                      <input type="radio" id="1" name="post_type" value="1" class="" required=""> 
                       <label for="1">Above 18</label>
-                    </div>
-                      
-                    
-                    @error('district')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    </div>                     
                     <p class="help-block"></p>
                   </div>
+
+
+
                   <div class="form-group">
-                    <label for="pincode" class="control-label">Add one hours as bonus by typing company name below</label>
-                    <input id="company_name" type="text" class="form-control @error('company_name') is-invalid @enderror" name="company_name" required="" value="" placeholder="Company Name">
-                    @error('company_name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <label for="pincode" class="control-label">{{$company_name}}</label>
+                    <input id="company_name" type="text" class="form-control" name="company_name" placeholder="Type Above Text Here">                    
                     <p class="help-block"></p>
                   </div>
-                  <div class="form-group-radio">
+                  <div class="form-group form-group-radio">
                     <label for="pincode" class="control-label"></label>
-                    <input id="checkbox" type="checkbox" class="form-control @error('checkbox') is-invalid @enderror" name="checkbox" required="">
-                    <label for="checkbox">I am agree to the term and conditions</label>
+                    <input id="term" type="checkbox" class="form-control" name="term" required="">
+                    <label for="term">I agree to <a href="{{url('term-condition')}}">Terms and Conditions</a></label>
                     <p class="help-block"></p>
-                  </div>
+                  </div>                  
+                    
+                    <div class="form-group" style="text-align: center;" id="head">
+                      <button type="button" class="btn button-eff button-eff-2" id="pay-btn">Pay</button>                    
+                    </div>
 
-
-                    <button type="submit" class="btn button-eff button-eff-2">Next</button>
-                </form>
-            </div>
-            
+                    <!-- <script src="https://checkout.razorpay.com/v1/checkout.js"
+                            data-key="{{ env('ROZOR_KEY') }}"
+                            data-amount="1000"
+                            data-buttontext="Pay"
+                            data-name="Tacepook"                          
+                            data-currency="USD"                          
+                            data-description="Order Value"
+                            data-image="https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg"
+                            data-prefill.name="name"
+                            data-prefill.email="email"
+                            data-theme.color="#ff7529">
+                    </script> -->
+                </form>              
+                                        
+            </div>            
         </div>
     </div>
 </div>
 
-
-<section>
-<div class="container" style="display: none;">
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8"> @php echo ($total_product < $post)?$post-$total_product:"0"; @endphp post is avaialables out of {{$post}} post in this Hour</div>
+<div class="w3l-products-4">
+    <div id="products4-block" class="text-center" style="padding: 0;padding-bottom: 40px;">
+        <div class="wrapper">            
+            <input id="tab1" type="radio" name="tabs" checked="">
+            <section id="content1" class="tab-content text-left">
+              <h3 class=title-main>Promoted</h3>
+                <div class="d-grid grid-col-3" id="search-add-post">
+                    <div class="product">
+                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <div class="info-bg">
+                            <h5><a href="#product">Empty Pages Private Limited</a></h5>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <div class="info-bg">
+                            <h5><a href="#product">Secminhr Private Limited</a></h5>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <div class="info-bg">
+                            <h5><a href="#product">AN IT Company - Software Services</a></h5> 
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
-        <div class="panel pt-4">
-          @php
-              $product_id = strtoupper(uniqid()).rand(1,100);
-          @endphp
-          <div class="signup-style">Automatic generated ID : PID{{$product_id}}</div>
-          <div class="panel-body">
-            <form class="form-horizontal" action="{{ url('profile') }}" id="register"  method="POST">
-              @csrf
-              <input type="hidden" name="product_id" value="PID{{$product_id}}">
-              <div class="row loginstyle">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="first_name" class="control-label">Name</label>
-                    <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" required="" value="" placeholder="Name">
-                    @error('first_name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <p class="help-block"></p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="last_name" class="control-label">Email</label>
-                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" required="" value="" placeholder="Email">
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <p class="help-block"></p>
-                  </div>
-                </div>
-              </div>
-              <div class="row loginstyle">
-               <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="last_name" class="control-label">Networks / Website</label>
-                    <select class="form-control @error('network') is-invalid @enderror" id="network" name="network" required="">
-                      <option value="">Select Networks / Website</option>
-                      @foreach($network as $net)
-                          <option value="{{$net->id}}">{{$net->name}}</option>
-                      @endforeach
-                    </select>
-                    @error('network')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <p class="help-block"></p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="last_name" class="control-label">Country</label>
-                    <select class="form-control @error('country') is-invalid @enderror" id="country" name="country" required="">
-                      <option value="">Select Country</option>
-                      @foreach($country as $cntry)
-                          <option value="{{$cntry->id}}">{{$cntry->name}}</option>
-                      @endforeach
-                    </select>
-                    @error('country')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <p class="help-block"></p>
-                  </div>
-                </div>
-              </div>
-              <div class="row loginstyle">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="language" class="control-label">Language</label>
-                    <select class="form-control @error('language') is-invalid @enderror" id="language" name="language" required="">
-                      <option value="">Select Language</option>
-                      @foreach($language as $lang)
-                          <option value="{{$lang->id}}">{{$lang->name}}</option>
-                      @endforeach
-                    </select>
-                    @error('language')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $language }}</strong>
-                        </span>
-                    @enderror
-                    <p class="help-block"></p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="promotional_link" class="control-label">Promotional Link</label>
-                    <input id="promotional_link" type="text" class="form-control @error('promotional_link') is-invalid @enderror" name="promotional_link" required="" value="" placeholder="Promotional Link">
-                    @error('promotional_link')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <p class="help-block"></p>
-                  </div>
-                </div>
-              </div>
-              <div class="row loginstyle">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="image" class="control-label">Upload Image</label>
-                    <input type="file"  class="form-control @error('image') is-invalid @enderror" id="image" required="" name="image">   
-                                        
-                    @error('image')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <p class="help-block"></p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="state" class="control-label">Paid Amount</label>
-                    <input id="cost" type="text" class="form-control @error('cost') is-invalid @enderror" name="cost" required="" value="" placeholder="Paid Amount">
-                    @error('state')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <p class="help-block"></p>
-                  </div>
-                </div>
-              </div>
-              <div class="row loginstyle">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="pop_signup_password" class="control-label">Post/Content Display</label>
-                    <input type="radio" id="0" name="post_type" value="0" class="form-control">
-                    <label for="0">All</label>
-                    <input type="radio" id="1" name="post_type" value="1" class="form-control">
-                    <label for="1">Above 18</label>
-                    @error('district')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <p class="help-block"></p>
-                  </div>
-                </div>                
-              </div>
-              <div class="row loginstyle">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="pincode" class="control-label">Add one hours as bonus by typing company name below</label>
-                    <input id="company_name" type="text" class="form-control @error('company_name') is-invalid @enderror" name="company_name" required="" value="" placeholder="Company Name">
-                    @error('company_name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <p class="help-block"></p>
-                  </div>
-                </div>
-              </div>
+</div>
 
-              <div class="row loginstyle">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="pincode" class="control-label"></label>
-                    <input id="checkbox" type="checkbox" class="form-control @error('checkbox') is-invalid @enderror" name="checkbox" required="">
-                    <label for="checkbox">I am agree to the term and conditions</label>
-                    <p class="help-block"></p>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <p id="pop-signup-form-msg" class="help-block"></p>
-                <button id="pop-signup-button" type="submit" class="btn btn-primary log-button">
-                  Next
-                </button>
-                <!-- <span id="pop-signup-button-loading" class="btn btn-primary log-button" style="display:none;">
-                  Registering..
-                </span> -->
-              </div>
-            </form>
-          </div>
-         </div>
-      </div>
-      <div class="col-md-2"></div>
-    </div>
-  </div>
-</section>
+<script type="text/javascript">
+  function loadfile(filename,amount,currency) {
+      var fileref=document.createElement('script')
+      //fileref.setAttribute("type","text/javascript")
+      fileref.setAttribute("src", filename)
+      fileref.setAttribute("data-key", '{{ env("ROZOR_KEY") }}')
+      fileref.setAttribute("data-amount", amount*100)
+      fileref.setAttribute("data-buttontext", 'Pay')
+      fileref.setAttribute("data-name", 'Tacepook')
+      fileref.setAttribute("data-currency", currency)
+      fileref.setAttribute("data-description", 'Pay')
+      fileref.setAttribute("data-image", 'https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg')
+      fileref.setAttribute("data-prefill.name", 'name')
+      fileref.setAttribute("data-prefill.email", 'email')
+      fileref.setAttribute("data-theme.color", '#ff7529')
+      if (typeof fileref!="undefined")
+      document.getElementById("register").appendChild(fileref)
+}
+</script>
+
 @endsection

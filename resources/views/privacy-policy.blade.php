@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.front')
 @section('content')
 <style type="text/css">
    .navbar-light .navbar-brand{
@@ -14,9 +14,14 @@
    box-shadow: 0 5px 10px 0 rgba(79,36,85,.15)
    }
    .navbar-light .navbar-nav .nav-link{
-   color: #009688 ;
-   font-weight: 600;
+      color: #009688 ;
+      font-weight: 600;
    }
+   h3 {
+      font-weight: 600;
+      text-align: center;
+      padding: 120px 0 0;
+  }
 </style>
 <style type="text/css">
    .custom-heading{
@@ -45,10 +50,10 @@
    color: #009688 ;
    }
 </style>
-<section class="about-us-section1">
+<section class="about-us-section1 m-0">
    <h3 class="custom-heading">Privacy Policy</h3>
-   <p class="p-5">
+   
       {!!$privacy->value!!}
-   </p>
+   
 </section>
 @endsection

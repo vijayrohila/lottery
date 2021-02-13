@@ -127,7 +127,7 @@ div.dataTables_wrapper div.dataTables_length select{
       <ul class="breadcrumbs-custom-path">
         <li><a style="font-size: 20px;">Live Traffic</a></li>
         <li></li>
-        <li class="active custom-box" id="custom_box">123641</li>
+        <li class="active custom-box" id="custom_box">{{$analyticsData}}</li>
       </ul>
     </div>
   </div>
@@ -143,18 +143,18 @@ div.dataTables_wrapper div.dataTables_length select{
                   <a href=#product>
                       <div class=card>
                           <div class=card-body>
-                              <span class="fa fa-bed"></span>
-                              <h5 class="card-title mt-4">Furniture </h5>
-                              <p class=para-design>6 Ads Posted</p>
+                              <span class="fa fa-bullhorn"></span>
+                              <h5 class="card-title mt-4">Today </h5>
+                              <p class=para-design>{{$today_product}}</p>
                           </div>
                       </div>
                   </a>
                   <a href=#product>
                       <div class=card>
                           <div class=card-body>
-                              <span class="fa fa-briefcase"></span>
-                              <h5 class="card-title mt-4">Jobs</h5>
-                              <p class=para-design>5 Ads Posted</p>
+                              <span class="fa fa-heart"></span>
+                              <h5 class="card-title mt-4">Total</h5>
+                              <p class=para-design>{{$total_product}}</p>
                           </div>
                       </div>
 
@@ -166,13 +166,14 @@ div.dataTables_wrapper div.dataTables_length select{
 </section>
 <section>
   <div class="wrapper">
+    <h3 class=title-main>Previous Traffic</h3>
     <div class="row m-0 p-4">
         <div class="col-md-12">
            <table id="traffic-list" class="display responsive nowrap table">
               <thead>
                  <tr  class="table-header">
-                    <th class="table-data">Previous day</th>
-                    <th class="table-data">Visitor</th>                  
+                    <th class="table-data">Date</th>
+                    <th class="table-data">Visitors</th>                  
                  </tr>
               </thead>
               <tbody>
@@ -206,11 +207,12 @@ div.dataTables_wrapper div.dataTables_length select{
 <section class="w3l-search-form-3-main">
     <div class="search-form-3">
         <div class="wrapper">
+          <h3 class=title-main>Search Your Post ID Here</h3>
             <div class="section-width">
-                <form action="#" class="search-3-gd" method="post">
+                <form action="#" class="search-3-gd" method="post" id="search-post-id">
                     <div class="d-flex grids-icon">
                         <span class="fa fa-text-height" aria-hidden="true"></span>
-                        <input type="search" name="text" placeholder="Type your POST ID" required="">
+                        <input type="search" name="search" placeholder="Type Your Post ID" required="">
                     </div>
                     
                     <button type="submit" class="btn button-eff"><span class="fa fa-search" aria-hidden="true"></span>Search</button>
@@ -242,34 +244,28 @@ div.dataTables_wrapper div.dataTables_length select{
 
 <div class="w3l-products-4">
     <div id="products4-block" class="text-center" style="padding: 0;padding-bottom: 40px;">
-        <div class="wrapper">
+        <div class="wrapper">            
             <input id="tab1" type="radio" name="tabs" checked="">
-            <label class="tabtle" for="tab1" style="display: none">Latest Ads</label>
-
+            
             <section id="content1" class="tab-content text-left">
-                <div class="d-grid grid-col-3">
+              <h3 class="title-main" id="prmt">Promoted</h3>
+                <div class="d-grid grid-col-3" id="search-add-post">
                     <div class="product">
                         <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
                         <div class="info-bg">
-                            <h5><a href="#product">Sed ut perspiciatis unde omnis iste natus</a></h5>
-                            <p>Nulla ex nunc</p>
-                            <ul class="d-flex">
-                                <li><span class="fa fa-usd"></span> 1200</li>
-                                <li class="margin-effe"><a href="#fav" title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                <li><a href="#sahre" title="Share"><span class="fa fa-share"></span></a></li>
-                            </ul>
+                            <h5><a href="#product">Empty Pages Private Limited</a></h5>
                         </div>
                     </div>
                     <div class="product">
                         <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
                         <div class="info-bg">
-                            <h5><a href="#product">Eaque ipsa quae ab illo inventore veritatis</a></h5>
-                            <p>Nulla ex nunc</p>
-                            <ul class="d-flex">
-                                <li><span class="fa fa-usd"></span> 299</li>
-                                <li class="margin-effe"><a href="#fav" title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                <li><a href="#sahre" title="Share"><span class="fa fa-share"></span></a></li>
-                            </ul>
+                            <h5><a href="#product">Secminhr Private Limited</a></h5>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <div class="info-bg">
+                            <h5><a href="#product">AN IT Company - Software Services</a></h5> 
                         </div>
                     </div>
                 </div>

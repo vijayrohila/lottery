@@ -8,19 +8,38 @@
       <meta name="csrf-token" content="{{ csrf_token() }}">
       <title>{{env('APP_NAME')}}</title>
       <link rel=stylesheet href="{{asset('/assets/css/style-starter.css')}}">
+      <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
+      <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">      
+     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css"> 
+     <link rel="stylesheet" type="text/css" href="https://demo.w3layouts.com/assests/fonts/fontawesome-webfont.woff?v=4.7.0">
+     <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+
    </head>
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JM370STK2X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JM370STK2X');
+      ga('send', 'pageview');
+    </script>
+    
+   <div id="loading" style="display: none;">
+         <img id="loading-image" src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." />
+      </div>
    <script>
       var base_url = "{{ url('/')}}";
    </script>
    <body class=no-scroll>
+      
       <div id="codefund"></div>
       <meta name="robots" content="noindex">
       <body>
-         <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
-         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">      
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css"> 
-        <link rel="stylesheet" type="text/css" href="https://demo.w3layouts.com/assests/fonts/fontawesome-webfont.woff?v=4.7.0"> 
-         <style>
+
+      <style>
              {
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -144,6 +163,12 @@
             margin-bottom: 0;
             }
             }
+            .column2 {
+                width: 214px;
+            }
+            div#traffic-list_filter {
+                display: none;
+            }
          </style>
          
          <div class=w3l-headers-9>
@@ -164,25 +189,16 @@
                         <nav>
                            <div class=wrapper>
                               <ul class=menu>
-                                 <li><a href="{{url('stats')}}" class=link-nav>Stats</a></li>
-                                 <li><a href="{{url('upload')}}" class=link-nav>Upload</a></li>
+                                 <li><a href="{{url('publish')}}" class=link-nav>Publish</a></li>
+                                 <li><a href="{{url('statistics')}}" class=link-nav>Statistics</a></li>
                               </ul>
                            </div>
                         </nav>
                      </div>
                   </div>
                </div>
-            </header>
-            <script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
-            <script>
-               $('#nav').change(function () {
-                   if ($('#nav').is(":checked")) {
-                       $('body').css('overflow', 'hidden');
-                   } else {
-                       $('body').css('overflow', 'auto');
-                   }
-               });
-            </script>
+            </header>          
+            
          </div>
          @yield('content')
          <footer class=w3l-footer-22>
@@ -191,9 +207,9 @@
                   <div class=wrapper>
                      <div class=text-txt>
                         <div class=right-side>
-                           <h4>Create Your Classified Website Today!</h4>
-                           <p class=para-sep>The Best Classified Ads Theme in the World <a href=#download>Download
-                              Now</a>
+                           <h4>Publish Your Content @ Lowest Price</h4>
+                           <!-- <p class=para-sep>The Best Classified Ads Theme in the World <a href=#download>Download
+                              Now</a> -->
                            </p>
                            <div class=sub-columns>
                               <div class=sub-one-left>
@@ -202,17 +218,17 @@
                                     doloremque
                                     laudantium, totam rem aperiam, eaque ipsa quae ab.
                                  </p>
-                                 <div class=columns-2>
+                                 <div class=columns-2>                                    
                                     <ul class=social>
-                                       <li><a href=#facebook><span class="fa fa-facebook" aria-hidden=true></span></a>
+                                       <li><a href=#youtube><span class="fa fa-youtube" aria-hidden=true></span></a>
                                        </li>
-                                       <li><a href=#linkedin><span class="fa fa-linkedin" aria-hidden=true></span></a>
+                                       <li><a href=#instagram><span class="fa fa-instagram" aria-hidden=true></span></a>
                                        </li>
                                        <li><a href=#twitter><span class="fa fa-twitter" aria-hidden=true></span></a>
                                        </li>
-                                       <li><a href=#google><span class="fa fa-google-plus" aria-hidden=true></span></a>
-                                       </li>
-                                       <li><a href=#github><span class="fa fa-github" aria-hidden=true></span></a>
+                                       <li><a href=#linkedin><span class="fa fa-linkedin" aria-hidden=true></span></a>
+                                       </li>                                       
+                                       <li><a href=#pinterest><span class="fa fa-pinterest" aria-hidden=true></span></a>
                                        </li>
                                     </ul>
                                  </div>
@@ -220,15 +236,28 @@
                               <div class=sub-two-right>
                                  <h6>Quick links</h6>
                                  <ul>
-                                    <li><a href=index.html><span class="fa fa-angle-double-right mr-2"></span>Home</a>
+                                    <li>
+                                       <a href="{{url('about-us')}}"><span class="fa fa-angle-double-right mr-2"></span>
+                                          About Us
+                                       </a>
                                     </li>
-                                    <li><a href=about.html><span class="fa fa-angle-double-right mr-2"></span>About</a>
+                                    <li>
+                                       <a href="{{url('term-condition')}}">
+                                       <span class="fa fa-angle-double-right mr-2"></span>Terms and Conditions
+                                       </a>
                                     </li>
-                                    <li><a href=services.html><span class="fa fa-angle-double-right mr-2"></span>Services</a></li>
-                                    <li><a href=contact.html><span class="fa fa-angle-double-right mr-2"></span>Contact</a></li>
+                                    <li>
+                                       <a href="{{url('privacy-policy')}}"><span class="fa fa-angle-double-right mr-2"></span>Privacy Policy</a>
+                                    </li>                                    
+                                    <li>
+                                       <a href="{{url('faq')}}">
+                                          <span class="fa fa-angle-double-right mr-2"></span>
+                                          FAQ
+                                       </a>
+                                    </li>
                                  </ul>
                               </div>
-                              <div class=sub-two-right>
+                              <!-- <div class=sub-two-right>
                                  <h6>Help & Support</h6>
                                  <ul>
                                     <li><a href=index.html><span class="fa fa-angle-double-right mr-2"></span>Live
@@ -241,16 +270,16 @@
                                        of Services</a>
                                     </li>
                                  </ul>
-                              </div>
+                              </div> -->
                               <div class=sub-one-left>
                                  <h6>Contact </h6>
                                  <div class=column2>
-                                    <div class=href1><span class="fa fa-envelope-o" aria-hidden=true></span><a href=mailto:info@example.com>info@example.com</a>
+                                    <div class=href1><span class="fa fa-envelope-o" aria-hidden=true></span><a href=mailto:info@example.com>contact@tacepook.com</a>
                                     </div>
-                                    <div class=href2><span class="fa fa-phone" aria-hidden=true></span><a href=tel:+44-000-888-999>+44-000-888-999</a>
+                                    <div class=href2><span class="fa fa-phone" aria-hidden=true></span><a href=tel:+44-000-888-999>+91 9876543210</a>
                                     </div>
                                     <div>
-                                       <p class=contact-para><span class="fa fa-map-marker" aria-hidden=true></span>London, 235 Terry, 10001</p>
+                                       <p class=contact-para><span class="fa fa-map-marker" aria-hidden=true></span>Hyderabad, India.</p>
                                     </div>
                                  </div>
                               </div>
@@ -263,7 +292,7 @@
                   <div class=wrapper>
                      <div class=copyright-footer>
                         <div class="columns text-left">
-                           <p>@2019 Classify. All rights reserved. Design by <a href="https://w3layouts.com/" target=_blank> W3Layouts</a>
+                           <p>&copy; {{date('Y')}} tacepook.com | All Rights Reserved | Developed by <a href="http://www.anitco.in" target="_blank">ANITCO</a>
                            </p>
                         </div>
                         <ul class=text-right>
@@ -271,6 +300,7 @@
                            </li>
                            <li><a href=#payment><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/payment2.jpg" alt="" class="img-responsive"></a>
                            </li>
+                          <li> <a href="#payment"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/payment3.jpg" alt="" class="img-responsive"></a></li>
                            
                            <li><a href=#payment><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/payment4.jpg" alt="" class="img-responsive"></a>
                            </li>
@@ -304,11 +334,60 @@
             </section>
          </footer>
    </body>
-   <script src="{{ asset('js/jquery.validate.min.js')}}"></script>
+    <!-- <script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.validate.min.js')}}"></script>
+    <script src="{{ asset('js/custom.js') }}" defer></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/jquery.validate.min.js')}}"></script>
+    <script src="{{ asset('js/toastr.js') }}" defer></script>
+    <script src="{{ asset('js/custom.js') }}" defer></script>
+
     <script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
-    <script src="{{ asset('js/jquery.validate.min.js')}}"></script>
-   <script src="{{ asset('js/custom.js') }}" defer></script>
+
+    <script>
+      $('#nav').change(function () {
+          if ($('#nav').is(":checked")) {
+              $('body').css('overflow', 'hidden');
+          } else {
+              $('body').css('overflow', 'auto');
+          }
+      });
+    </script>
+   
    </body>
 </html>
+@if(session()->has('message'))
+<script>
+$(document).ready(function () {
+    setTimeout(function () {
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            showMethod: 'slideDown',
+            timeOut: 4000,
+        }
+        ;
+                toastr.success('{{ session()->get('message') }}', 'Success');
+    }, 300);
+});
+</script>
+@endif
+@if(session()->has('error_message'))
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                showMethod: 'slideDown',
+                timeOut: 4000
+            }
+            ;
+                    toastr.error('{{ session()->get('error_message') }}', 'Error');
+        }, 300);
+    });
+</script>
+@endif

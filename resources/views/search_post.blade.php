@@ -1,6 +1,6 @@
 @if(!empty($search_post))
     @foreach($search_post as $product)
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <div class="product-wrapper">
            <div class="product-image-wrapper">
               <img src="{{url('/admin/public/product/1598189039download.jpg')}}">
@@ -15,10 +15,19 @@
               </div>
            </div>
         </div>
+      </div> -->
+      <div class="product">
+          <a href="#product"><img src="{{url('/admin/public/product/1598189039download.jpg')}}" class="img-responsive" alt=""></a>
+          <div class="info-bg">
+              <h5><a href="#product">{{$product['name']}}</a></h5>
+          </div>
       </div>
     @endforeach
 @else
-      <div class="col-md-4">
-        Posts not found.
+      <div class="col-md-12">
+        
+      </div>
+      <div class="col-md-12" style="text-align: center !important;">
+        No Posts Available
       </div>
 @endif    
