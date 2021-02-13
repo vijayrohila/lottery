@@ -74,22 +74,32 @@
     box-shadow: none;
    }
    .table {
-  width: 100%;
+  width: 100% !important;
   border: 1px solid #EEEEEE;
 }
 
 .table-header {
-  display: flex;
+
   width: 100%;
   background: #f85c70;
   padding: 18px 0;
   color: white
 }
 
+.table-header > .table-data{
+  padding: 16px;
+}
+
 .table-row {
-  display: flex;
+/*  display: flex;*/
   width: 100%;
   padding: 18px 0;
+}
+
+#traffic-list tbody tr td{
+  padding: 16px;
+  text-align: center;
+  background-color: #e8e8e8; 
 }
 .table-row:nth-of-type(odd) {
   background: #EEEEEE;
@@ -116,6 +126,25 @@ div.dataTables_wrapper div.dataTables_length select{
 .img-responsive{
     width: 100%;
     
+}
+label.error{
+  margin-top: 12px;
+}
+
+#traffic-list_paginate .pagination{
+  list-style: none;
+  display: inline-block;
+}
+#traffic-list_paginate .pagination .paginate_button{
+  margin-left: 10px;
+  display: inline-block;
+}
+#traffic-list_wrapper .col-md-5{
+  display: inline-block;
+}
+#traffic-list_wrapper .col-md-7{
+  display: inline-block;
+  float: right;
 }
 </style>
 <style type="text/css">
@@ -169,7 +198,7 @@ div.dataTables_wrapper div.dataTables_length select{
     <h3 class=title-main>Previous Traffic</h3>
     <div class="row m-0 p-4">
         <div class="col-md-12">
-           <table id="traffic-list" class="display responsive nowrap table">
+           <table id="traffic-list" class=" table">
               <thead>
                  <tr  class="table-header">
                     <th class="table-data">Date</th>
@@ -210,7 +239,7 @@ div.dataTables_wrapper div.dataTables_length select{
           <h3 class=title-main>Search Your Post ID Here</h3>
             <div class="section-width">
                 <form action="#" class="search-3-gd" method="post" id="search-post-id">
-                    <div class="d-flex grids-icon">
+                    <div class="d-flex grids-icon" style="margin-bottom: 20px;">
                         <span class="fa fa-text-height" aria-hidden="true"></span>
                         <input type="search" name="search" placeholder="Type Your Post ID" required="">
                     </div>
