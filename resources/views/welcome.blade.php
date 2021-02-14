@@ -11,6 +11,40 @@
     width: 100%;
     
 }
+.custom-design-cards .product{
+    padding: 19px;
+    background-color: white;
+    box-shadow: 0 10px 30px 0 rgba(17, 17, 17, 0.09);
+
+}
+.custom-design-cards .info-bg{
+    box-shadow: none;
+    padding: 25px 0px;
+}
+
+.custom-design-cards .button-type-1{
+    display: inline-block !important;
+    background-color: #f55b70;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-weight: 700;
+}
+.custom-design-cards .button-type-2{
+    display: inline-block !important;
+    border: 1px solid #f55b70;
+    padding: 8px;
+    margin-left: 10px;
+}
+.custom-design-cards .product{
+    position: relative;
+}
+#search-add-post .settings-dropdown{
+    position: absolute;
+    right: 7px;
+    top: 18px;
+    font-size: 22px;
+}   
 </style>
     <section class=w3l-banner-3-main>
         <div class=banner-3>
@@ -264,222 +298,58 @@
         </div>
     </div>
     
-    <!-- <section class=w3l-grids-9-main>
-        <div class=grid-top-9>
-            <div class=wrapper>
-                <h3 class=title-main>Popular Locations</h3>
-                <div class="d-grid grid-col-3 grid-element-9 margin-bottom">
-                    <div class="left-grid-ele-9 grid-bg3">
-                        <div class=sub-wid-grid-9>
-                            <h4 class=text-grid-9><a href=#product>London</a></h4>
-                            <p class=sub-para>Sed ut perspi</p>
+
+    <div class="w3l-products-4 custom-design-cards">
+        <div id="products4-block" class="text-center">
+            <div class="wrapper">
+                <h3 class="title-main" id="prmt">Promoted1</h3>
+                
+                <section id="content1" class="tab-content text-left">
+                    <div class="d-grid grid-col-3" id="search-add-post">
+                        <div class="product">
+                            <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                            <div class="info-bg">
+                                <h5><a href="#product">Post ID: xxxxxxxxxxxx</a></h5>
+                                <div>
+                                    <i class="fa fa-eye"></i>
+                                    Views
+                                    <a href="" class="button-type-1">Link Button</a>
+                                    <a href="" class="button-type-2">
+                                        <i class="fa fa-share-alt"></i>
+                                        Share
+                                    </a>
+                                </div>
+                            </div>
+                            <a href="" class="settings-dropdown">
+                                <i class="fa fa-ellipsis-v"></i>
+                            </a>
                         </div>
-                    </div>
-                    <div class="left-grid-ele-9 grid-bg4">
-                        <div class=sub-wid-grid-9>
-                            <h4 class=text-grid-9><a href=#product>Japan</a></h4>
-                            <p class=sub-para>Sed ut perspi</p>
+                        <div class="product">
+                            <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                            <div class="info-bg">
+                                <h5><a href="#product">Post ID: xxxxxxxxxxxx</a></h5>
+                                <div>
+                                    <i class="fa fa-eye"></i>
+                                    Views
+                                    <a href="" class="button-type-1">Link Button</a>
+                                    <a href="" class="button-type-2">
+                                        <i class="fa fa-share-alt"></i>
+                                        Share
+                                    </a>
+                                </div>
+                            </div>
+                            <a href="" class="settings-dropdown">
+                                <i class="fa fa-ellipsis-v"></i>
+                            </a>
                         </div>
+                            
                     </div>
-                    <div class="left-grid-ele-9 grid-bg5">
-                        <div class=sub-wid-grid-9>
-                            <h4 class=text-grid-9><a href=#product>France</a></h4>
-                            <p class=sub-para>Sed ut perspi</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-grid grid-col-2 grid-element-9">
-                    <div class="left-grid-ele-9 grid-bg1">
-                        <div class=sub-wid-grid-9>
-                            <h4 class=text-grid-9><a href=#product>New Jersy</a></h4>
-                            <p class=sub-para>Sed ut perspi</p>
-                        </div>
-                    </div>
-                    <div class="left-grid-ele-9 grid-bg2">
-                        <div class=sub-wid-grid-9>
-                            <h4 class=text-grid-9><a href=#product>Paris</a></h4>
-                            <p class=sub-para>Sed ut perspi</p>
-                        </div>
-                    </div>
-                </div>
+                </section>
+
             </div>
         </div>
-    </section> -->
+    </div>
     
-    
-    <!-- <section class=w3l-specifications-9>
-        <div class=main-w3>
-            <div class=overlay>
-                <div class=wrapper>
-                    <div class="d-flex main-cont-wthree-fea text-center">
-                        <div class=grids-speci>
-                            <div class=stats-icon>
-                                <span class="fa fa-bullhorn" aria-hidden=true></span>
-                            </div>
-                            <div>
-                                <h3 class=title-spe>5000+</h3>
-                                <p>Published Ads</p>
-                            </div>
-                        </div>
-                        <div class=grids-speci>
-                            <div class=stats-icon>
-                                <span class="fa fa-users" aria-hidden=true></span>
-                            </div>
-                            <div>
-                                <h3 class=title-spe>3266+</h3>
-                                <p>Register User</p>
-                            </div>
-                        </div>
-                        <div class=grids-speci>
-                            <div class=stats-icon>
-                                <span class="fa fa-thumbs-o-up" aria-hidden=true></span>
-                            </div>
-                            <div>
-                                <h3 class=title-spe>2240+</h3>
-                                <p>Verified Users</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </section> -->
-    
-    <!-- <section class=w3l-pricing-7-main id=bottom>
-        <div class=pricing-7-sec>
-            <div class=wrapper>
-                <h3 class=title-main>Pricing Packages</h3>
-                <div class=pricing-sec-7>
-                    <div class="pricing-gd-left pric-7-1">
-                        <div class=w3l-pricing-7>
-                            <div class=w3l-pricing-7-top>
-                                <h6 class=one-light>Basic Plan</h6>
-                                <h4><label>$</label>19<span>/month</span></h4>
-                            </div>
-                            <div class=w3l-pricing-7-bottom>
-                                <div class=w3l-pricing-7-bottom-bottom>
-                                    <ul class=links>
-                                        <li>
-                                            <div class=tick-mark><span class="fa fa-check" aria-hidden=true></span>
-                                            </div>
-                                            <p class=tick-info>3 Regular Ads</p>
-
-                                        </li>
-                                        <li>
-                                            <div class=tick-mark><span class="fa fa-check" aria-hidden=true></span>
-                                            </div>
-                                            <p class=tick-info>1 Top Ad</p>
-
-                                        </li>
-                                        <li>
-                                            <div class=tick-mark><span class="fa fa-check" aria-hidden=true></span>
-                                            </div>
-                                            <p class=tick-info>1 Featured Ad</p>
-
-                                        </li>
-                                        <li>
-                                            <div class=tick-mark><span class="fa fa-check" aria-hidden=true></span>
-                                            </div>
-                                            <p class=tick-info>Basic Support</p>
-
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class=buy-button>
-                                    <a class="popup btn button-eff" href=#login>Purchase Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pricing-gd-left pric-7 active">
-                        <div class=w3l-pricing-7>
-                            <div class=w3l-pricing-7-top>
-                                <h5>Popular</h5>
-                                <h6>Silver Plan</h6>
-                                <h4><label>$</label>39<span>/month</span></h4>
-                            </div>
-                            <div class=w3l-pricing-7-bottom>
-                                <div class=w3l-pricing-7-bottom-bottom>
-                                    <ul class=links>
-                                        <li>
-                                            <div class=tick-mark><span class="fa fa-check" aria-hidden=true></span>
-                                            </div>
-                                            <p class=tick-info>5 Regular Ads</p>
-
-                                        </li>
-                                        <li>
-                                            <div class=tick-mark><span class="fa fa-check" aria-hidden=true></span>
-                                            </div>
-                                            <p class=tick-info>3 Top Ads</p>
-
-                                        </li>
-                                        <li>
-                                            <div class=tick-mark><span class="fa fa-check" aria-hidden=true></span>
-                                            </div>
-                                            <p class=tick-info>2 Featured Ads</p>
-
-                                        </li>
-                                        <li>
-                                            <div class=tick-mark><span class="fa fa-check" aria-hidden=true></span>
-                                            </div>
-                                            <p class=tick-info>Basic Support</p>
-
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class=buy-button>
-                                    <a class="popup btn button-eff" href=#login>Purchase Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pricing-gd-left pric-7-2">
-                        <div class=w3l-pricing-7>
-                            <div class=w3l-pricing-7-top>
-                                <h6 class=one-light>Gold Plan</h6>
-                                <h4><label>$</label>59<span>/month</span></h4>
-                            </div>
-                            <div class=w3l-pricing-7-bottom>
-                                <div class=w3l-pricing-7-bottom-bottom>
-                                    <ul class=links>
-                                        <li>
-                                            <div class=tick-mark><span class="fa fa-check" aria-hidden=true></span>
-                                            </div>
-                                            <p class=tick-info>Unlimited Regular Ads</p>
-
-                                        </li>
-                                        <li>
-                                            <div class=tick-mark><span class="fa fa-check" aria-hidden=true></span>
-                                            </div>
-                                            <p class=tick-info>10 Top Ads</p>
-
-                                        </li>
-                                        <li>
-                                            <div class=tick-mark><span class="fa fa-check" aria-hidden=true></span>
-                                            </div>
-                                            <p class=tick-info>5 Featured Ads</p>
-
-                                        </li>
-                                        <li>
-                                            <div class=tick-mark><span class="fa fa-check" aria-hidden=true></span>
-                                            </div>
-                                            <p class=tick-info>Priority Support</p>
-
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class=buy-button>
-                                    <a class="popup btn button-eff" href=#login>Purchase Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
     
     
     <section class=w3l-content-11-main>
@@ -903,3 +773,4 @@
    </div>
 </section> -->
 @endsection
+

@@ -355,6 +355,11 @@
               $('body').css('overflow', 'auto');
           }
       });
+
+      $('body').on('click','.settings-dropdown',function(e){
+         e.preventDefault();
+         
+      });
     </script>
    
    </body>
