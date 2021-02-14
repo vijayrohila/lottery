@@ -44,7 +44,28 @@
     right: 7px;
     top: 18px;
     font-size: 22px;
-}   
+}  
+
+.settings-dropdown-wrapper{
+    display: none;
+    position: absolute;
+    right: -32px;
+    top: 42px;
+    z-index: 9;
+    list-style: none;
+    background: white;
+    box-shadow: 0 10px 30px 0 rgba(17, 17, 17, 0.09);
+
+}
+.settings-dropdown-wrapper > li {
+    padding: 10px;
+    border-bottom: 1px solid #e8e8e8;
+    cursor: pointer;
+}
+.settings-dropdown-wrapper > li:last-child{
+    border-bottom: none;
+}
+
 </style>
     <section class=w3l-banner-3-main>
         <div class=banner-3>
@@ -85,74 +106,11 @@
         </div>
     </section>
     
-   <!--  <form id="search-post" method="post">
-        <div class="row text-center p-5 m-0" style="background-color: #e8e8e8">
-          <div class="col-md-2"></div>       
-            <div class="col-md-4">
-              <select class="form-control " id="language" name="language" required="" >
-                <option value="">Select Language</option>
-                @foreach($languages as $lang)
-                    <option value="{{$lang->id}}">{{$lang->name}}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="col-md-4">
-              <button type="submit" class="form-control custom-button">Submit</button>
-            </div>      
-        </div>
-       </form> -->
-       <!-- <div class="row text-center p-5 m-0" id="search-add-post">
-          @foreach($products as $product)
-             <div class="col-md-4">
-                <div class="product-wrapper">
-                   <div class="product-image-wrapper">
-                      <img src="{{url('/admin/public/product/1598189039download.jpg')}}">
-                   </div>
-                   <div class="product-content-wrapper">
-                      <div class="product-title">{{$product->name}}</div>
-                      <div class="product-price">${{$product->cost}}/-</div>
-                      <div class="product-id">{{$product->product_id}}</div>
-                      <div class="product-actions">     
-                          <a href="#" class="btn btn-primary">Link</a>
-                          <ion-icon name="add"></ion-icon>
-                      </div>
-                   </div>
-                </div>
-             </div>
-          @endforeach
-       </div> -->
-    
     <div class="w3l-products-4">
         <div id="products4-block" class="text-center">
             <div class="wrapper">
                 <h3 class="title-main" id="prmt">Promoted</h3>
-                <!-- <input id=tab1 type=radio name=tabs checked>
-                <label class=tabtle for=tab1>Latest Ads</label>
-
-                <input id=tab2 type=radio name=tabs>
-                <label class=tabtle for=tab2>Featured Ads</label>
-
-                <input id=tab3 type=radio name=tabs>
-                <label class=tabtle for=tab3>Ending Soon</label> -->
-
-                <!-- <section id=content1 class="tab-content text-left">
-                    <div class="d-grid grid-col-3">
-                        @foreach($products as $product)
-                        <div class=product>
-                            <a href=#product><img src="{{ env('ADMIN_URL').'/product/1598189039download.jpg'}}" class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>{{$product->name}}</a></h5>
-                                <p>{{$product->product_id}}</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> {{$product->cost}}</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>   
-                        @endforeach                     
-                    </div>
-                </section> -->
+               
                 <section id="content1" class="tab-content text-left">
                     <div class="d-grid grid-col-3" id="search-add-post">
                         <div class="product">
@@ -176,123 +134,6 @@
                     </div>
                 </section>
 
-                <!-- <section id=content2 class="tab-content text-left">
-                    <div class="d-grid grid-col-3">
-                        <div class=product>
-                            <a href=#product><img src=assets/images/c4.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Sed ut perspiciatis unde omnis iste natus</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 1200</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class=product>
-                            <a href=#product><img src=assets/images/c6.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Eaque ipsa quae ab illo inventore veritatis</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 299</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class=product>
-                            <a href=#product><img src=assets/images/pr4.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Quasi architecto beatae vitae dicta sunt</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 499</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class=product>
-                            <a href=#product><img src=assets/images/ps4.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Nemo enim ipsam quia voluptas sit et expedita</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 800</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class=product>
-                            <a href=#product><img src=assets/images/c3.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Quasi architecto beatae vitae dicta sunt</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 499</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section id=content3 class="tab-content text-left">
-                    <div class="d-grid grid-col-3">
-                        <div class=product>
-                            <a href=#product><img src=assets/images/ps6.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Sed ut perspiciatis unde omnis iste natus</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 1200</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class=product>
-                            <a href=#product><img src=assets/images/pr6.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Eaque ipsa quae ab illo inventore veritatis</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 299</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class=product>
-                            <a href=#product><img src=assets/images/pj4.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Quasi architecto beatae vitae dicta sunt</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 499</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class=product>
-                            <a href=#product><img src=assets/images/c5.jpg class=img-responsive alt=""></a>
-                            <div class=info-bg>
-                                <h5><a href=#product>Ut enim ad minima veniam, quis nostrum</a></h5>
-                                <p>Nulla ex nunc</p>
-                                <ul class=d-flex>
-                                    <li><span class="fa fa-usd"></span> 1300</li>
-                                    <li class=margin-effe><a href=#fav title="Add this to Favorite"><span class="fa fa-heart-o"></span></a></li>
-                                    <li><a href=#sahre title=Share><span class="fa fa-share"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section> -->
 
             </div>
         </div>
@@ -323,6 +164,10 @@
                             <a href="" class="settings-dropdown">
                                 <i class="fa fa-ellipsis-v"></i>
                             </a>
+                            <ul class="settings-dropdown-wrapper">
+                                <li>Option first text</li>
+                                <li>Option second text</li>
+                            </ul>
                         </div>
                         <div class="product">
                             <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>

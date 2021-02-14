@@ -146,6 +146,35 @@ label.error{
   display: inline-block;
   float: right;
 }
+
+.custom-design-cards .product{
+    padding: 19px;
+    background-color: white;
+    box-shadow: 0 10px 30px 0 rgba(17, 17, 17, 0.09);
+
+}
+.custom-design-cards .info-bg{
+    box-shadow: none;
+    padding: 25px 0px;
+}
+
+.custom-design-cards .button-type-1{
+    display: inline-block !important;
+    background-color: #f55b70;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-weight: 700;
+}
+.custom-design-cards .button-type-2{
+    display: inline-block !important;
+    border: 1px solid #f55b70;
+    padding: 8px;
+    margin-left: 10px;
+}
+.custom-design-cards .product{
+    position: relative;
+}
 </style>
 <style type="text/css">
    .table td, .table th{vertical-align: middle;}
@@ -271,7 +300,7 @@ label.error{
    </div>
 </section> --}}
 
-<div class="w3l-products-4">
+<div class="w3l-products-4 custom-design-cards">
     <div id="products4-block" class="text-center" style="padding: 0;padding-bottom: 40px;">
         <div class="wrapper">            
             <input id="tab1" type="radio" name="tabs" checked="">
@@ -282,19 +311,12 @@ label.error{
                     <div class="product">
                         <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
                         <div class="info-bg">
-                            <h5><a href="#product">Empty Pages Private Limited</a></h5>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
-                        <div class="info-bg">
-                            <h5><a href="#product">Secminhr Private Limited</a></h5>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
-                        <div class="info-bg">
-                            <h5><a href="#product">AN IT Company - Software Services</a></h5> 
+                            <h5><a href="#product">Status: Timer/Active/Deleted</a></h5>
+                            <h5><a href="#product">Post ID: xxxxxxxxxxxx</a></h5>
+                            <h5><a href="#product">Date: DD-MM-YY to DD-MM-YY</a></h5>
+                            <h5><a href="#product">Views: 490k</a></h5>
+                            <div style="font-size: 20px;font-weight: 700;color: #232323;">link: <a href="" class="button-type-1">Link Button</a></div>
+                            <h5><a href="#product">Delete: count/5000</a></h5>
                         </div>
                     </div>
                 </div>
@@ -302,4 +324,7 @@ label.error{
         </div>
     </div>
 </div>
+
+
+
 @endsection

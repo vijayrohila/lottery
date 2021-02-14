@@ -358,7 +358,7 @@
 
       $('body').on('click','.settings-dropdown',function(e){
          e.preventDefault();
-         
+         $(this).next('.settings-dropdown-wrapper').toggle();
       });
     </script>
    
