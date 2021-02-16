@@ -65,10 +65,12 @@
 .settings-dropdown-wrapper > li:last-child{
     border-bottom: none;
 }
-
+.w3l-banner-3-main .banner-3{
+    background: none;
+}
 </style>
-    <section class=w3l-banner-3-main>
-        <div class=banner-3>
+    <section class="w3l-banner-3-main owl-carousel">
+        <div class="banner-3 item" style="background-image: url(https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943_960_720.jpg);animation: unset;background-size: cover;">
             <div class=wrapper>
                 <div class=cover-top-center-9>
                     <div class=w3ls_cover_txt-9>
@@ -78,6 +80,27 @@
                 </div>
             </div>
         </div>
+        <div class="banner-3 item" style="background-image: url(https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943_960_720.jpg);animation: unset;background-size: cover;">
+            <div class=wrapper>
+                <div class=cover-top-center-9>
+                    <div class=w3ls_cover_txt-9>
+                        <h3 class=title-cover-9>Publish Your Content @ Lowest Price</h3>
+                        <p class=para-cover-9>Now Enjoy Current Affairs around World in One Click.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="banner-3 item" style="background-image: url(https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943_960_720.jpg);animation: unset;background-size: cover;">
+            <div class=wrapper>
+                <div class=cover-top-center-9>
+                    <div class=w3ls_cover_txt-9>
+                        <h3 class=title-cover-9>Publish Your Content @ Lowest Price</h3>
+                        <p class=para-cover-9>Now Enjoy Current Affairs around World in One Click.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>   
     
     <section class=w3l-search-form-3-main>
