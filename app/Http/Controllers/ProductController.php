@@ -155,7 +155,7 @@ class ProductController extends Controller
 
         $search_post = Product::where("product_id",$request->search)->get()->toArray();
 
-        $post = view("search_post",compact('search_post'))->render();
+        $post = view("search_post_id",compact('search_post'))->render();
 
         return response()->json(['status'=>'success', 'message'=>'', "result" => $post]);
     }

@@ -300,11 +300,10 @@ label.error{
    </div>
 </section> --}}
 
-<div class="w3l-products-4 custom-design-cards">
+<!-- <div class="w3l-products-4 custom-design-cards">
     <div id="products4-block" class="text-center" style="padding: 0;padding-bottom: 40px;">
         <div class="wrapper">            
-            <input id="tab1" type="radio" name="tabs" checked="">
-            
+            <input id="tab1" type="radio" name="tabs" checked="">            
             <section id="content1" class="tab-content text-left">
               <h3 class="title-main" id="prmt">Promoted</h3>
                 <div class="d-grid grid-col-3" id="search-add-post">
@@ -317,6 +316,37 @@ label.error{
                             <h5><a href="#product">Views: 490k</a></h5>
                             <div style="font-size: 20px;font-weight: 700;color: #232323;">link: <a href="" class="button-type-1">Link Button</a></div>
                             <h5><a href="#product">Delete: count/5000</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div> -->
+
+<div class="w3l-products-4 custom-design-cards" id="search-add-post">
+    <div id="products4-block" class="text-center" style="padding: 0;padding-bottom: 40px;">
+        <div class="wrapper">            
+            <input id="tab1" type="radio" name="tabs" checked="">
+            <section id="content1" class="tab-content text-left">
+              <h3 class="title-main" id="prmt">Promoted</h3>
+                <div class="d-grid grid-col-3" >
+                    <div class="product">
+                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <div class="info-bg">
+                            <h5><a href="#product">Empty Pages Private Limited</a></h5>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <div class="info-bg">
+                            <h5><a href="#product">Secminhr Private Limited</a></h5>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <div class="info-bg">
+                            <h5><a href="#product">AN IT Company - Software Services</a></h5> 
                         </div>
                     </div>
                 </div>
