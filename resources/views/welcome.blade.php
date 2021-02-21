@@ -125,7 +125,22 @@
 .owl-dots .owl-dot.active{
     background-color: white;
 }
+.modal-content{
+    width: 80%;
+}
 
+.age-custom-button{
+        padding: 12px 32px;
+    font-size: 24px;
+    background: var(--theme-color-3);
+    border: 0;
+}
+.age-custom-button-2{
+        padding: 12px 32px;
+    font-size: 24px;
+    background: var(--theme-color-2);
+    border: 0;
+}
 </style>
     <section class="w3l-banner-3-main owl-carousel">
         <div class="banner-3 item" style="background-image: url(https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943_960_720.jpg);animation: unset;background-size: cover;">
@@ -316,6 +331,27 @@
                 <!-- <a class="a2a_dd" href="https://www.addtoany.com/share"></a> -->
             </div>
             <script async src="https://static.addtoany.com/menu/page.js"></script>
+        </p>
+      </div>
+    </div>
+
+    <div id="age_check_modal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>
+            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                 <h1 style="line-height: 1.6;">We need to check how old you are!</h1>
+
+                 <button class="age-custom-button">
+                     + 18
+                 </button>
+
+                 <button class="age-custom-button-2">
+                     - 18
+                 </button>
+            </div>
+           
         </p>
       </div>
     </div>
