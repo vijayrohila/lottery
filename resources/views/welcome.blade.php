@@ -141,6 +141,12 @@
     background: var(--theme-color-2);
     border: 0;
 }
+@media only screen and (max-width: 500px) {
+.settings-dropdown-wrapper{
+    right: 0;
+}  
+}
+
 </style>
     <section class="w3l-banner-3-main owl-carousel">
         <div class="banner-3 item" style="background-image: url(https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943_960_720.jpg);animation: unset;background-size: cover;">
