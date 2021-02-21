@@ -26,6 +26,34 @@
     border-radius: 5px;
     margin: 0px 5px 10px;
    }
+   .custom-design-cards .product{
+    padding: 19px;
+    background-color: white;
+    box-shadow: 0 10px 30px 0 rgba(17, 17, 17, 0.09);
+
+}
+.custom-design-cards .info-bg{
+    box-shadow: none;
+    padding: 25px 0px;
+}
+
+.custom-design-cards .button-type-1{
+    display: inline-block !important;
+    background-color: #f55b70;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-weight: 700;
+}
+.custom-design-cards .button-type-2{
+    display: inline-block !important;
+    border: 1px solid #f55b70;
+    padding: 8px;
+    margin-left: 10px;
+}
+.custom-design-cards .product{
+    position: relative;
+}
 
   .error {
     color: red;
@@ -208,24 +236,10 @@ input[type=number] {
                     <input id="term" type="checkbox" class="form-control" name="term" required="">
                     <label for="term">I agree to <a href="{{url('term-condition')}}">Terms and Conditions</a></label>
                     <p class="help-block"></p>
-                  </div>                  
-                    
-                    <div class="form-group" style="text-align: center;" id="head">
-                      <button type="button" class="btn button-eff button-eff-2" id="pay-btn">Pay</button>                    
-                    </div>
-
-                    <!-- <script src="https://checkout.razorpay.com/v1/checkout.js"
-                            data-key="{{ env('ROZOR_KEY') }}"
-                            data-amount="1000"
-                            data-buttontext="Pay"
-                            data-name="Tacepook"                          
-                            data-currency="USD"                          
-                            data-description="Order Value"
-                            data-image="https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg"
-                            data-prefill.name="name"
-                            data-prefill.email="email"
-                            data-theme.color="#ff7529">
-                    </script> -->
+                  </div>                 
+                  <div class="form-group" style="text-align: center;" id="head">
+                    <button type="button" class="btn button-eff button-eff-2" id="pay-btn">Pay</button>
+                  </div>                    
                 </form>              
                                         
             </div>            
@@ -233,7 +247,7 @@ input[type=number] {
     </div>
 </div>
 
-<div class="w3l-products-4">
+<div class="w3l-products-4 custom-design-cards">
     <div id="products4-block" class="text-center" style="padding: 0;padding-bottom: 40px;">
         <div class="wrapper">            
             <input id="tab1" type="radio" name="tabs" checked="">
@@ -241,21 +255,21 @@ input[type=number] {
               <h3 class=title-main>Promoted</h3>
                 <div class="d-grid grid-col-3" id="search-add-post">
                     <div class="product">
-                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <a href="https://emptypages.world"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
                         <div class="info-bg">
-                            <h5><a href="#product">Empty Pages Private Limited</a></h5>
+                            <h5><a href="https://emptypages.world">Empty Pages Private Limited</a></h5>
                         </div>
                     </div>
                     <div class="product">
-                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <a href="https://secminhr.com"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
                         <div class="info-bg">
-                            <h5><a href="#product">Secminhr Private Limited</a></h5>
+                            <h5><a href="https://secminhr.com">Secminhr Private Limited</a></h5>
                         </div>
                     </div>
                     <div class="product">
-                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <a href="https://anitco.in"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
                         <div class="info-bg">
-                            <h5><a href="#product">AN IT Company - Software Services</a></h5> 
+                            <p><a href="https://anitco.in"><b>AN IT CO</b>mpany - Software Services</a></p> 
                         </div>
                     </div>
                 </div>
@@ -266,8 +280,9 @@ input[type=number] {
 
 <script type="text/javascript">
   function loadfile(filename,amount,currency) {
+      //alert(currency);
       var fileref=document.createElement('script')
-      //fileref.setAttribute("type","text/javascript")
+      fileref.setAttribute("type","text/javascript")
       fileref.setAttribute("src", filename)
       fileref.setAttribute("data-key", '{{ env("ROZOR_KEY") }}')
       fileref.setAttribute("data-amount", amount*100)

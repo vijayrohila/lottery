@@ -7,6 +7,7 @@ use App\Setting;
 use App\EngageProduct;
 use Illuminate\Http\Request;
 use Validator;
+use DB;
 
 class ProductController extends Controller
 {
@@ -115,9 +116,17 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $total_delete = Setting::where("key","delete_post")->get()->first();
+
+        $product = Product::find(decrypt($id));
+        $product->delete_count = $product->delete_count + 1;
+
+        $product->is_deleted = ($total_delete->value <= $product->delete_count)?1:0;
+        
+        $product->save();
+        return response()->json(['status'=>'success', 'message'=>'Product delete successfully!']);
     }
 
     public function searchPost(Request $request)
@@ -133,9 +142,13 @@ class ProductController extends Controller
             }
         }
 
-        $search_post = Product::where("language_id",$request->language)->get()->toArray();
+        $total_delete = Setting::where("key","delete_post")->get()->first();
 
-        $post = view("search_post",compact('search_post'))->render();
+        $search_post = Product::with("network")->where(["language_id" => $request->language, "is_deleted" => "0"])->get()->toArray();
+
+        Product::whereIn("id",array_column($search_post, "id"))->increment("view", 1);
+
+        $post = view("search_post",compact('search_post','total_delete'))->render();
 
         return response()->json(['status'=>'success', 'message'=>'', "result" => $post]);
     }
@@ -153,9 +166,11 @@ class ProductController extends Controller
             }
         }
 
+        $total_delete = Setting::where("key","delete_post")->get()->first();
+
         $search_post = Product::where("product_id",$request->search)->get()->toArray();
 
-        $post = view("search_post_id",compact('search_post'))->render();
+        $post = view("search_post_id",compact('search_post','total_delete'))->render();
 
         return response()->json(['status'=>'success', 'message'=>'', "result" => $post]);
     }
@@ -173,9 +188,7 @@ class ProductController extends Controller
             }
         }
 
-        $input = $request->all();
-
-        
+        $input = $request->all();        
 
         $total_post_hour = Setting::where("key","post_hours")->get()->first();
 

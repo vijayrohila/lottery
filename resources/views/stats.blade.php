@@ -332,21 +332,21 @@ label.error{
               <h3 class="title-main" id="prmt">Promoted</h3>
                 <div class="d-grid grid-col-3" >
                     <div class="product">
-                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <a href="https://emptypages.world"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
                         <div class="info-bg">
-                            <h5><a href="#product">Empty Pages Private Limited</a></h5>
+                            <h5><a href="https://emptypages.world">Empty Pages Private Limited</a></h5>
                         </div>
                     </div>
                     <div class="product">
-                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <a href="https://secminhr.com"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
                         <div class="info-bg">
-                            <h5><a href="#product">Secminhr Private Limited</a></h5>
+                            <h5><a href="https://secminhr.com">Secminhr Private Limited</a></h5>
                         </div>
                     </div>
                     <div class="product">
-                        <a href="#product"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
+                        <a href="https://anitco.in"><img src="https://demo.w3layouts.com/demosWTR/Starter30-11-2019/classify-starter-demo_Free/1561860545/web/assets/images/c1.jpg" class="img-responsive" alt=""></a>
                         <div class="info-bg">
-                            <h5><a href="#product">AN IT Company - Software Services</a></h5> 
+                            <p><a href="https://anitco.in"><b>AN IT CO</b>mpany - Software Services</a></p> 
                         </div>
                     </div>
                 </div>

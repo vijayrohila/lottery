@@ -16,11 +16,39 @@
            </div>
         </div>
       </div> -->
-      <div class="product">
+      <!-- <div class="product">
           <a href="#product"><img src="{{url('/admin/public/product/1598189039download.jpg')}}" class="img-responsive" alt=""></a>
           <div class="info-bg">
               <h5><a href="#product">{{$product['name']}}</a></h5>
           </div>
+      </div> -->
+      <div class="product">
+          <a href="#product">
+            <img src="{{url('/public/product/'.$product['image'])}}" class="img-responsive" alt=""></a>
+          <div class="info-bg">
+              <h5><a href="#product">Post ID: {{$product['product_id']}}</a></h5>
+              <div>
+                  <i class="fa fa-eye"></i>
+                  {{$product['view']}}
+                  <a href="{{$product['promotional_link']}}" class="button-type-1">
+                      {!! $product['network']['icon'] !!}
+                      Click Here
+                  </a>
+                  <!-- <a class="button-type-2 share-post">
+                      <i class="fa fa-share-alt"></i>
+                      Share
+                  </a> -->
+              </div>
+          </div>
+          <a href="" class="settings-dropdown">
+              <i class="fa fa-ellipsis-v"></i>
+          </a>
+          <ul class="settings-dropdown-wrapper">
+              <li id="{{encrypt($product['id'])}}" class="delete-post">
+                Delete: {{$product['delete_count']}}/{{$total_delete->value}}
+              </li>
+              <!-- <li></li> -->
+          </ul>
       </div>
     @endforeach
 @else

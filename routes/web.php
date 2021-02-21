@@ -43,6 +43,8 @@ Route::post('product-id-post', 'ProductController@productIdPost');
 
 
 
+
+
 /*Route::get('/change-password', 'HomeController@changePassword');
 Route::post('/change-password', 'HomeController@updatePassword');
 

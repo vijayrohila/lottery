@@ -14,6 +14,7 @@
      <link rel="stylesheet" type="text/css" href="https://demo.w3layouts.com/assests/fonts/fontawesome-webfont.woff?v=4.7.0">
      <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
      <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
    </head>
    <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -274,9 +275,9 @@
                               <div class=sub-one-left>
                                  <h6>Contact </h6>
                                  <div class=column2>
-                                    <div class=href1><span class="fa fa-envelope-o" aria-hidden=true></span><a href=mailto:info@example.com>contact@tacepook.com</a>
+                                    <div class=href1><span class="fa fa-envelope-o" aria-hidden=true></span><a href=mailto:contact@tacepook.com>contact@tacepook.com</a>
                                     </div>
-                                    <div class=href2><span class="fa fa-phone" aria-hidden=true></span><a href=tel:+44-000-888-999>+91 9876543210</a>
+                                    <div class=href2><span class="fa fa-phone" aria-hidden=true></span><a href=tel:+91-9876543210>+91 9876543210</a>
                                     </div>
                                     <div>
                                        <p class=contact-para><span class="fa fa-map-marker" aria-hidden=true></span>Hyderabad, India.</p>

@@ -143,19 +143,21 @@ $(function(){
     }
 
     var amount = 0;
-    var currency = '';
+    //var currency = '';
 
     $("body").on('change', '#country', function (event) {
         let tax = $("#country :selected").attr("data-tax");       
         let fee = $("#country :selected").attr("data-fee"); 
-        let currency = $("#country :selected").attr("data-currency"); 
+        //let currency = $("#country :selected").attr("data-currency"); 
         amount =  parseFloat(fee) + parseFloat(tax);  
-        currency =  currency;  
+        //currency =  currency;  
         $("#tax").val(tax);  
         $("#fee").val(fee);  
         $("#total").val(amount);  
         $("#pay-total").html(amount);
     });
+
+    
 
     $("body").on('click', '#pay-btn', function (event) { 
             let form = $("#register");
@@ -165,14 +167,19 @@ $(function(){
                 if($("script[src='https://checkout.razorpay.com/v1/checkout.js']").length > 0) {
                     $("script[src='https://checkout.razorpay.com/v1/checkout.js']").remove();
                     $(".razorpay-payment-button").remove();
-                }
+                    
+                }     
 
-                loadfile('https://checkout.razorpay.com/v1/checkout.js',amount,currency); 
+                let currency = $("#country :selected").attr("data-currency");
+
+                //alert(currency);
+
+                loadfile('https://checkout.razorpay.com/v1/checkout.js',amount,currency);           
 
                 setTimeout(function() {
                     if($(".razorpay-payment-button").length > 0) {
                         $(".razorpay-payment-button").trigger('click');
-                    } else {
+                    } else {                        
                         toastr.error("Something Went Wrong", 'Error');
                     }
 
@@ -216,6 +223,44 @@ $(function(){
                 toastr.error("Something Went Wrong", 'Error');
             }
         });
+    });
+
+    $("body").on('click', '.delete-post', function (event) {
+        swal({
+            title: "Are You Sure! You want to Delete this Post ?",
+            text: "",
+            icon: "warning",
+            buttons: ["Cancel", "Yes"],
+        }).then((willDelete) => {
+            if (willDelete) {
+                let id = $(this).attr("id");
+                $.ajax({
+                    url: base_url+"/product/"+id,
+                    type: 'DELETE',
+                    //data: {id:id},        
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')             
+                    },
+                    beforeSend: function () {
+                        $("#loading").show();
+                    },
+                    complete: function () {
+                        $("#loading").hide();
+                    },
+                    success: function (response) {
+                        if (response.status == "success") {
+                            $("#search-lang-post").click();
+                        } else {
+                            toastr.error(response.message, 'Error');
+                        }
+                    },
+                    error: function(xhr) {            
+                        toastr.error("Something Went Wrong", 'Error');
+                    }
+                });
+            }
+        });        
     });                
        
 
@@ -249,6 +294,8 @@ $(function(){
             });
         }
     }); 
+
+       
           
 });
 
