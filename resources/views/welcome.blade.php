@@ -106,6 +106,26 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.owl-nav{display: none;}
+
+.owl-dots{
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+.owl-dots .owl-dot{
+    width: 14px;
+    height: 14px;
+    border: 1px solid #e8e8e8 !important;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.owl-dots .owl-dot.active{
+    background-color: white;
+}
+
 </style>
     <section class="w3l-banner-3-main owl-carousel">
         <div class="banner-3 item" style="background-image: url(https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943_960_720.jpg);animation: unset;background-size: cover;">
