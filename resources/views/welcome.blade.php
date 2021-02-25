@@ -126,7 +126,7 @@
     background-color: white;
 }
 .modal-content{
-    width: 80%;
+    width: 40%;
 }
 
 .age-custom-button{
@@ -146,10 +146,34 @@
     right: 0;
 }  
 }
+@media (max-width: 480px) {
+  .w3l-banner-3-main .cover-top-center-9 {
+    min-height: 37vh;
+  }
+}
+
+option.avatar {
+  background-repeat: no-repeat !important;
+  padding-left: 20px;
+}
 
 </style>
     <section class="w3l-banner-3-main owl-carousel">
-        <div class="banner-3 item" style="background-image: url(https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943_960_720.jpg);animation: unset;background-size: cover;">
+        @foreach($banners as $banner)
+        <div class="banner-3 item" style="background-image: url('{{env('ADMIN_URL').'/banner/'.$banner['value']}}');animation: unset;background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%; height: 100%">
+            <div class=wrapper>
+                <div class=cover-top-center-9>
+                    <div class=w3ls_cover_txt-9>
+                        <!-- <h3 class=title-cover-9>Publish Your Content @ Lowest Price</h3>
+                        <p class=para-cover-9>Now Enjoy Current Affairs around World in One Click.</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        <!-- <div class="banner-3 item" style="background-image: url(https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943_960_720.jpg);animation: unset;background-size: cover;">
             <div class=wrapper>
                 <div class=cover-top-center-9>
                     <div class=w3ls_cover_txt-9>
@@ -168,19 +192,20 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="banner-3 item" style="background-image: url(https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943_960_720.jpg);animation: unset;background-size: cover;">
-            <div class=wrapper>
-                <div class=cover-top-center-9>
-                    <div class=w3ls_cover_txt-9>
-                        <h3 class=title-cover-9>Publish Your Content @ Lowest Price</h3>
-                        <p class=para-cover-9>Now Enjoy Current Affairs around World in One Click.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> -->
 
-    </section>   
+    </section>  
+
+    <section class=w3l-content-11-main style="max-height: 218px;">
+        <div class="content-design-11" style="padding: 29px 0px;">
+            <div class=wrapper>
+                <h3 class=title-main>Publish Your Content @ Lowest Price</h3>
+                <div class="content-text" style="text-align: center;">
+                    Now Enjoy Current Affairs around World in One Click.                                        
+                </div>
+            </div>
+        </div>
+    </section> 
     
     <section class=w3l-search-form-3-main>
         <div class=search-form-3>
@@ -193,7 +218,9 @@
                                 <select class="btn btn-default" id="language" name="language" required="" >
                                     <option value="">Select Languages</option>
                                     @foreach($languages as $lang)
-                                        <option value="{{$lang->id}}">{{$lang->name}}</option>
+                                        <option value="{{$lang['id']}}" data-class="avatar" style="background-image: url('http://pngimg.com/uploads/dot/small/dot_PNG38.png');">
+                                            {{$lang['name']}} 
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -211,8 +238,7 @@
     <div class="w3l-products-4 custom-design-cards">
         <div id="products4-block" class="text-center">
             <div class="wrapper">
-                <h3 class="title-main" id="prmt">Promoted</h3>
-               
+                <h3 class="title-main" id="prmt">Promoted</h3>               
                 <section id="content1" class="tab-content text-left">
                     <div class="d-grid grid-col-3" id="search-add-post">
                         <div class="product">
@@ -302,7 +328,7 @@
                 </div>
             </div>
         </div>
-    </section>    
+    </section> 
 
     <!-- Modal -->
     <!-- <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -347,14 +373,12 @@
         <span class="close">&times;</span>
         <p>
             <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-                 <h1 style="line-height: 1.6;">We need to check how old you are!</h1>
-
-                 <button class="age-custom-button">
-                     + 18
+                 <h1 style="line-height: 1.6;">Select Your Age Range!</h1>
+                 <button class="age-custom-button age-check" id="age-plus">
+                     Above 18
                  </button>
-
-                 <button class="age-custom-button-2">
-                     - 18
+                 <button class="age-custom-button-2 age-check" id="age-minus">
+                     Below 18
                  </button>
             </div>
            

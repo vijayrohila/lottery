@@ -261,7 +261,21 @@ $(function(){
                 });
             }
         });        
-    });                
+    });
+
+    $("body").on('click', '.age-check', function (event) {
+        let id  = $(this).attr("id");  
+        if(id == "age-plus"){
+            Cookies.set('age', id);
+        } else {
+            Cookies.set('age', id);
+        }   
+        window.location.reload();
+    });   
+
+    if(typeof Cookies.get('age') == "undefined") {
+        $('#age_check_modal').show()
+    }             
        
 
     $("#search-post-id").validate({

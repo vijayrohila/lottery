@@ -15,6 +15,7 @@
      <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
      <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
    </head>
    <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -24,8 +25,7 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-JM370STK2X');
-      ga('send', 'pageview');
+      gtag('config', 'G-JM370STK2X');      
     </script> --}}
     
    <div id="loading" style="display: none;">
@@ -206,8 +206,8 @@
             <section class=fotter-sub>
                <div class=footer>
                   <div class=wrapper>
-                     <div class=text-txt>
-                        <div class=right-side>
+                     <div class="text-txt">
+                        <div class="right-side">
                            <h4>Publish Your Content @ Lowest Price</h4>
                            <!-- <p class=para-sep>The Best Classified Ads Theme in the World <a href=#download>Download
                               Now</a> -->
@@ -354,13 +354,17 @@
 <script type="text/javascript">
     $('.owl-carousel').owlCarousel({
         loop:true,
+        items:1,
         margin:10,
         nav:true,
-        responsive:{
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoplayHoverPause:true
+        /*responsive:{
             0:{
                 items:1
             }
-        }
+        }*/
     })
 </script>
     <script>

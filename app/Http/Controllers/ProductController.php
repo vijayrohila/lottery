@@ -70,6 +70,7 @@ class ProductController extends Controller
         $input['network_id'] = $input['network'];
         $input['country_id'] = $input['country'];
         $input['language_id'] = $input['language'];
+        $input['is_deleted'] = 0;
 
         Product::create($input);
 
@@ -144,7 +145,13 @@ class ProductController extends Controller
 
         $total_delete = Setting::where("key","delete_post")->get()->first();
 
-        $search_post = Product::with("network")->where(["language_id" => $request->language, "is_deleted" => "0"])->get()->toArray();
+        $search_post = Product::with("network")
+                              ->whereBetween('created_at', [
+                                now()->format('Y-m-d 00:00:00'),
+                                now()->format('Y-m-d 23:59:59')
+                              ])
+                              ->where(["language_id" => $request->language, "is_deleted" => "0"])
+                              ->get()->toArray();
 
         Product::whereIn("id",array_column($search_post, "id"))->increment("view", 1);
 

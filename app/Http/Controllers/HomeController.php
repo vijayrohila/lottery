@@ -45,10 +45,19 @@ class HomeController extends Controller
     {
         //$visitor = Tracker::currentSession();
         //echo "<pre>"; print_r($visitor); die();
-        $products = Product::all();
-        $languages = Language::all(); 
+        //$products = Product::all();
+        $banners = Setting::where(["key" => "banner1"])
+                            ->orWhere(["key" => "banner3"])
+                            ->orWhere(["key" => "banner2"])
+                            ->get()->toArray();
 
-        return view('welcome',compact('products','languages'));
+        //echo "<pre>"; print_r($banner); die(); 
+
+        $languages = Language::with('product')->get()->toArray(); 
+
+        //echo "<pre>"; print_r($languages); die();
+
+        return view('welcome',compact('languages','banners'));
     }
 
     public function privacyPolicy()

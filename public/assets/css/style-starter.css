@@ -3962,7 +3962,7 @@ h3.title-main:after {
   background-repeat: repeat-x;
   animation: slideleft 10000s infinite linear;
   -webkit-animation: slideleft 10000s infinite linear;
-  z-index: 0;
+  /*z-index: 0;*/
 }
 
 .w3l-banner-3-main .banner-3:before {
@@ -4079,7 +4079,7 @@ h3.title-main:after {
 .w3l-search-form-3-main .search-form-3 {
   background: #f8f8f8;
   padding: 30px 0;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.22);
+  /*box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.22);*/
 }
 
 .w3l-search-form-3-main form.search-3-gd {
