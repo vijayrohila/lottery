@@ -170,6 +170,30 @@
             div#traffic-list_filter {
                 display: none;
             }
+            #age_check_modal > .modal-content{
+               background-image: url({{asset('/images/bg101.jpg')}});
+               padding: 0;
+            }
+            #age_check_modal > .modal-content > div{
+               background: #212b30bf;
+               padding: 20px;
+               text-align: center;
+               padding-bottom: 70px;
+            }
+
+            #age_check_modal > .modal-content h1{
+               color: white;
+               margin: 40px auto;
+    text-align: center;
+            }
+
+            #age_check_modal > .modal-content .close{
+               width: 32px;
+               text-align: center;
+            }
+            #age-minus{
+               margin-left: 18px;
+            }
          </style>
          
          <div class=w3l-headers-9>
@@ -380,6 +404,10 @@
          e.preventDefault();
          $(this).next('.settings-dropdown-wrapper').toggle();
       });
+
+      $('body').on('click','.close',function(e){
+         $('#age_check_modal').hide();
+      });      
     </script>
    
    </body>
