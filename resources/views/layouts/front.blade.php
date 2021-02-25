@@ -173,6 +173,7 @@
             #age_check_modal > .modal-content{
                background-image: url({{asset('/images/bg101.jpg')}});
                padding: 0;
+               border: none;
             }
             #age_check_modal > .modal-content > div{
                background: #212b30bf;

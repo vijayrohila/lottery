@@ -160,7 +160,11 @@ option.avatar {
 </style>
     <section class="w3l-banner-3-main owl-carousel">
         @foreach($banners as $banner)
-        <div class="banner-3 item" style="background-image: url('{{env('ADMIN_URL').'/banner/'.$banner['value']}}');animation: unset;background-position: center;
+        {{-- <div class="banner-3 item" style="background-image: url('{{env('ADMIN_URL').'/banner/'.$banner['value']}}');animation: unset;background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%; height: 100%">
+ --}}
+        <div class="banner-3 item" style="background-image: url('http://anitco.in/assets/img/banner.jpeg');animation: unset;background-position: center;
             background-repeat: no-repeat;
             background-size: 100% 100%; height: 100%">
             <div class=wrapper>
