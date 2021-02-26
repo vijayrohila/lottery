@@ -168,6 +168,7 @@ option.avatar {
   h3.title-main {
     font-size: 32px;
     line-height: 32px;
+
   }
 }
 </style>
@@ -216,7 +217,9 @@ option.avatar {
     <section class=w3l-content-11-main style="max-height: 218px;">
         <div class="content-design-11" style="padding: 29px 0px;">
             <div class=wrapper>
-                <h3 class=title-main>Publish Your Content @ Lowest Price</h3>
+                <h3 class=title-main style="    width: 82%;
+    margin: 0 auto;
+    margin-bottom: 40px;">Publish Your Content @ Lowest Price</h3>
                 <div class="content-text" style="text-align: center;">
                     Now Enjoy Current Affairs around World in One Click.                                        
                 </div>
