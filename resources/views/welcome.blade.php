@@ -164,7 +164,12 @@ option.avatar {
   background-repeat: no-repeat !important;
   padding-left: 20px;
 }
-
+@media screen and (max-width: 415px) {
+  h3.title-main {
+    font-size: 32px;
+    line-height: 32px;
+  }
+}
 </style>
     <section class="w3l-banner-3-main owl-carousel">
         @foreach($banners as $banner)
