@@ -274,7 +274,22 @@ $(function(){
     });   
 
     if(typeof Cookies.get('age') == "undefined") {
-        $('#age_check_modal').show()
+        //$('#age_check_modal').show();
+        swal({
+            title: "Select Your Age Range!",
+            text: "",
+            icon: "warning",
+            closeOnClickOutside: false,
+            allowOutsideClick: false ,
+            className: "age-btn",            
+            buttons: [ "Below 18","Above 18"],
+        }).then((willDelete) => {
+            if (willDelete) {
+                Cookies.set('age', "age-plus");
+            } else {
+                Cookies.set('age', "age-minus");
+            }
+        });
     }             
        
 

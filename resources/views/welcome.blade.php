@@ -11,6 +11,14 @@
     width: 100%;
     
 }
+.age-btn .swal-button.swal-button--confirm {
+    background-color: #5ec64d!important;
+}
+
+.age-btn .swal-button.swal-button--cancel {
+    background-color: #f85c70!important;
+    color: white
+}
 .custom-design-cards .product{
     padding: 19px;
     background-color: white;
@@ -164,7 +172,7 @@ option.avatar {
             background-repeat: no-repeat;
             background-size: 100% 100%; height: 100%">
  --}}
-        <div class="banner-3 item" style="background-image: url('http://anitco.in/assets/img/banner.jpeg');animation: unset;background-position: center;
+        <div class="banner-3 item" style="background-image: url('{{env('ADMIN_URL').'/banner/'.$banner['value']}}');animation: unset;background-position: center;
             background-repeat: no-repeat;
             background-size: 100% 100%; height: 100%">
             <div class=wrapper>
